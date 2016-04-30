@@ -25,6 +25,7 @@ after_success:
   - mv id_rsa ~/.ssh/id_rsa
 
 deploy:
+  skip_cleanup: true
   provider: script
   script: ./deploy.sh
   on:
