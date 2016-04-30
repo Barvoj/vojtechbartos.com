@@ -1,0 +1,19 @@
+{
+  "description": "Personal web page",
+  "keywords": ["nette"],
+  "homepage": "http://vojtechbartos.com",
+  "type": "project",
+  "license": ["BSD-3-Clause"],
+  "authors": [
+    {
+      "name": "Vojtěch Bartoš",
+      "homepage": "http://vojtechbartos.com"
+    }
+  ],
+  "require": {
+    "php": ">= 7.0.0"
+  },
+  "require-dev": {
+    "nette/tester": "~1.7.0"
+  }
+}
