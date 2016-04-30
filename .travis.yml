@@ -9,6 +9,9 @@ before_install:
   # Update composer
   - travis_retry composer self-update
 
+  # Generate private key
+  - openssl aes-256-cbc -K $encrypted_5b9f08960f5d_key -iv $encrypted_5b9f08960f5d_iv -in id_rsa.enc -out id_rsa -d
+
 install:
   # Install dependecies
   - travis_retry composer install --no-interaction --prefer-source -o
@@ -16,3 +19,14 @@ install:
 script:
   # Run Nette Tester
   - vendor/bin/tester tests -s -p php
+
+after_success:
+  - chmod 600 id_rsa
+  - mv id_rsa ~/.ssh/id_rsa
+
+deploy:
+  provider: script
+  script: ./deploy.sh
+  on:
+    branch: master
+    repo: Barvoj/vojtechbartos.com
