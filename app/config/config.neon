@@ -1,0 +1,15 @@
+
+php:
+	date.timezone: Europe/Prague
+
+
+application:
+	errorPresenter: Error
+	mapping:
+		*: VojtechBartos\Presenters\*Presenter
+
+session:
+	expiration: 14 days
+
+services:
+    router: VojtechBartos\Router\RouterFactory::createRouter

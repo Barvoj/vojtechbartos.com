@@ -7,11 +7,13 @@
   "authors": [
     {
       "name": "Vojtěch Bartoš",
+      "email": "barvoj@seznam.cz",
       "homepage": "http://vojtechbartos.com"
     }
   ],
   "require": {
-    "php": ">= 7.0.0"
+    "php": ">= 7.0.0",
+    "nette/nette": "^2.3"
   },
   "require-dev": {
     "nette/tester": "~1.7.0"

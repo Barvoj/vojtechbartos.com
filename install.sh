@@ -14,7 +14,8 @@ remove_old_builds() {
 	done
 }
 
-unlink /srv/app && ln -s /srv/$1 /srv/app
+unlink /srv/webroot && ln -s /srv/$1 /srv/webroot
+unlink /srv/app && ln -s /srv/webroot/www /srv/app
 supervisorctl restart app
 
 remove_old_builds
