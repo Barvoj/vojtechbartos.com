@@ -1,0 +1,6 @@
+services:
+	# Repositories
+	- VojtechBartos\Model\Repositories\UserRepository(@doctrine.dao(VojtechBartos\Model\Entities\User))
+
+	# Entities
+	- VojtechBartos\Model\Entities\User

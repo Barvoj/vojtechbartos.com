@@ -2,6 +2,7 @@ data:
   build: ./
   volumes:
   - ".:/var/www/project"
+  - "db:/docker-entrypoint-initdb.d"
 nginx:
   image: bartos/nginx
   ports:
@@ -17,6 +18,14 @@ php:
     - "9000:9000"
   volumes_from:
     - data
+mysql:
+  image: bartos/mysql
+  ports:
+    - "3306:3306"
+  volumes_from:
+    - data
+  environment:
+    - MYSQL_ROOT_PASSWORD=root
 utils:
   image: bartos/utils
   volumes_from:
