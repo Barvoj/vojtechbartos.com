@@ -2,7 +2,7 @@
 
 namespace VojtechBartos\Presenters;
 
-use Nette\Application\UI\Presenter;
+use Libs\Application\UI\Presenter;
 
 class HomePresenter extends Presenter
 {

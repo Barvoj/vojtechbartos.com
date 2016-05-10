@@ -1,0 +1,11 @@
+sign:
+    you_have_been_signed_in: Byli jste úspěšně přihlášeni.
+    you_have_been_signed_out: Byli jste odhlášeni.
+    wrong_username_or_password: Chybné uživatelské jméno nebo heslo
+    sing_in_to_administration: Přihlášení do administrace
+    username: Uživatelské jméno
+    required: Pole je povinné
+    password: Heslo
+    remember: Zapamatovat
+    sign_in: Přihlásit
+    sign_out: Odhlásit

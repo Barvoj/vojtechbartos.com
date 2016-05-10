@@ -2,8 +2,8 @@
 
 namespace VojtechBartos\Presenters;
 
+use Libs\Application\UI\Presenter;
 use Nette\Application\BadRequestException;
-use Nette\Application\UI\Presenter;
 use Tracy\ILogger;
 
 /**

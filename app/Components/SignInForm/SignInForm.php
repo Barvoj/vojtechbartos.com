@@ -2,8 +2,7 @@
 
 namespace VojtechBartos\Components\Forms\SignInForm;
 
-use Libs\UI\FormFactory;
-use Libs\UI\Template;
+use Libs\Application\UI\FormFactory;
 use Nette\Application\UI\Control;
 use Nette\Application\UI\Form;
 use Nette\Security\AuthenticationException;
@@ -14,8 +13,6 @@ use Nette\Security\User;
  */
 class SignInForm extends Control
 {
-    use Template;
-
     /** @var User */
     private $user;
 
@@ -36,6 +33,12 @@ class SignInForm extends Control
         $this->formFactory = $formFactory;
     }
 
+    public function render()
+    {
+        $this->getTemplate()->setFile(__DIR__ . '/SignInForm.latte');
+        $this->getTemplate()->render();
+    }
+
     /**
      * @return Form
      */
@@ -43,18 +46,18 @@ class SignInForm extends Control
     {
         $form = $this->formFactory->create();
 
-        $form->addText("username", "admin.sign.username")
+        $form->addText("username", "messages.sign.username")
             ->setAttribute("autocomplete", "off")
-            ->setAttribute("placeholder", "admin.sign.username")
+            ->setAttribute("placeholder", "messages.sign.username")
             ->setRequired()
             ->addRule(Form::MIN_LENGTH, null, 3);
 
-        $form->addPassword("password", "admin.sign.password")
+        $form->addPassword("password", "messages.sign.password")
             ->setAttribute("autocomplete", "off")
-            ->setAttribute("placeholder", "admin.sign.password")
+            ->setAttribute("placeholder", "messages.sign.password")
             ->setRequired();
 
-        $form->addSubmit("submit", "admin.sign.sign_in");
+        $form->addSubmit("submit", "messages.sign.sign_in");
 
         $form->onSuccess[] = function(Form $form, $values) {
             $this->formSucceeded($form, $values);

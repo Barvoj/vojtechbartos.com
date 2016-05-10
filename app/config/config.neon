@@ -4,11 +4,21 @@ php:
 
 
 application:
+	debugger: true
 	errorPresenter: Error
 	mapping:
 		*: VojtechBartos\Presenters\*Presenter
 
+routing:
+	debugger: true
+
+
+security:
+	debugger: true
+
+
 session:
+	autoStart: true
 	expiration: 14 days
 
 console:
@@ -16,15 +26,21 @@ console:
 
 doctrine:
     driver: mysqli
+    host: 192.168.99.100
     user: root
     password: root
     dbname: vojtechbartos
     metadata:
         VojtechBartos: %appDir%
 
+translation:
+	default: cs
+	whitelist: [cs, en]
+	#fallback: [cs_CZ, cs]
+
 services:
     router: VojtechBartos\Router\RouterFactory::createRouter
-    - Libs\UI\FormFactory
+    - Libs\Application\UI\FormFactory
 
     - VojtechBartos\Model\Authenticator
     - VojtechBartos\Components\Forms\SignInForm\SignInFormFactory
@@ -34,6 +50,7 @@ extensions:
     events: Kdyby\Events\DI\EventsExtension
     annotations: Kdyby\Annotations\DI\AnnotationsExtension
     doctrine: Kdyby\Doctrine\DI\OrmExtension
+    translation: Kdyby\Translation\DI\TranslationExtension
 
 includes:
     - doctrine.neon
