@@ -9,6 +9,9 @@ application:
 	mapping:
 		*: VojtechBartos\Presenters\*Presenter
 
+di:
+    debugger: true
+
 routing:
 	debugger: true
 
@@ -37,6 +40,11 @@ translation:
 	default: cs
 	whitelist: [cs, en]
 	#fallback: [cs_CZ, cs]
+
+decorator:
+    Nette\Application\UI\Form:
+        setup:
+            - setTranslator(@translation.default)
 
 services:
     router: VojtechBartos\Router\RouterFactory::createRouter

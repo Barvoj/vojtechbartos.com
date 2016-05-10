@@ -26,7 +26,13 @@ mysql:
     - data
   environment:
     - MYSQL_ROOT_PASSWORD=root
-utils:
-  image: bartos/utils
-  volumes_from:
-    - data
+#utils:
+#  image: bartos/utils
+#  volumes_from:
+#    - data
+composer:
+  restart: 'no'
+  image: composer/composer:php7
+  command: install
+  volumes:
+    - .:/app
