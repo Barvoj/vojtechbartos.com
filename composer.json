@@ -32,7 +32,8 @@
     "tracy/tracy": "^2.3.0",
     "kdyby/doctrine": "^3.1",
     "kdyby/console": "^2.6",
-    "kdyby/translation": "^2.3"
+    "kdyby/translation": "^2.3",
+    "nextras/migrations": "^3.0.4"
   },
   "minimum-stability": "beta",
   "require-dev": {

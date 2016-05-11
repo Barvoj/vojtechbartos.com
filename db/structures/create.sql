@@ -1,11 +1,16 @@
-CREATE DATABASE `vojtechbartos`
-  CHARACTER SET utf8
-  COLLATE utf8_general_ci;
-USE `vojtechbartos`;
+# DROP DATABASE IF EXISTS `vojtechbartos`;
+# CREATE DATABASE `vojtechbartos`
+#   CHARACTER SET utf8
+#   COLLATE utf8_general_ci;
+# USE `vojtechbartos`;
+
+SET NAMES utf8;
+SET foreign_key_checks = 0;
 
 --
 -- Číselník jazyků
 --
+DROP TABLE IF EXISTS `vojtechbartos`.`languages`;
 CREATE TABLE `vojtechbartos`.`languages` (
   `language_id`     INT          NOT NULL AUTO_INCREMENT
   COMMENT 'Id jazyka',
@@ -31,6 +36,7 @@ CREATE TABLE `vojtechbartos`.`languages` (
 --
 -- Tabulka uživatelů
 --
+DROP TABLE IF EXISTS `vojtechbartos`.`users`;
 CREATE TABLE `vojtechbartos`.`users` (
   `user_id`       INT          NOT NULL AUTO_INCREMENT
   COMMENT 'Id uživatele',
@@ -59,6 +65,7 @@ CREATE TABLE `vojtechbartos`.`users` (
 --
 -- Tabulka článků
 --
+DROP TABLE IF EXISTS `vojtechbartos`.`articles`;
 CREATE TABLE `vojtechbartos`.`articles` (
   `article_id`       INT          NOT NULL AUTO_INCREMENT
   COMMENT 'Id článku',

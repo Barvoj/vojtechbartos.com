@@ -42,6 +42,11 @@ translation:
 	whitelist: [cs, en]
 	#fallback: [cs_CZ, cs]
 
+migrations:
+    dir: %appDir%/../db # migrations base directory
+    driver: mysql       # pgsql or mysql
+    dbal: doctrine      # nextras, nette, doctrine or dibi
+
 decorator:
     Nette\Application\UI\Form:
         setup:
@@ -60,6 +65,7 @@ extensions:
     annotations: Kdyby\Annotations\DI\AnnotationsExtension
     doctrine: Kdyby\Doctrine\DI\OrmExtension
     translation: Kdyby\Translation\DI\TranslationExtension
+    migrations: Nextras\Migrations\Bridges\NetteDI\MigrationsExtension
 
 includes:
     - doctrine.neon
