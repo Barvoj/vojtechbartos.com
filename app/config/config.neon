@@ -23,6 +23,7 @@ security:
 session:
 	autoStart: true
 	expiration: 14 days
+	savePath: "%tempDir%/sessions"
 
 console:
     url: http://vojtechbartos.com
