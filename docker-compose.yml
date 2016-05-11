@@ -18,6 +18,8 @@ php:
     - "9000:9000"
   volumes_from:
     - data
+  links:
+    - mysql
 mysql:
   image: bartos/mysql
   ports:

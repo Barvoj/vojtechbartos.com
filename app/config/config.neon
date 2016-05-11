@@ -23,14 +23,14 @@ security:
 session:
 	autoStart: true
 	expiration: 14 days
-	savePath: "%tempDir%/sessions"
+#	savePath: "%tempDir%/session"
 
 console:
     url: http://vojtechbartos.com
 
 doctrine:
     driver: mysqli
-    host: 192.168.99.100
+    host: mysql
     user: root
     password: root
     dbname: vojtechbartos

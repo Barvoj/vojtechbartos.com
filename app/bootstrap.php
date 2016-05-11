@@ -10,8 +10,6 @@ if (isset($_COOKIE['debug']) && $_COOKIE['debug'] === "true") {
 
 $configurator->enableDebugger(__DIR__ . '/../log');
 $configurator->setTempDirectory(__DIR__ . '/../temp');
-//$configurator->enableDebugger('/var/www/writable/log');
-//$configurator->setTempDirectory('/var/www/writable/temp');
 
 $configurator->createRobotLoader()
     ->addDirectory(__DIR__)
