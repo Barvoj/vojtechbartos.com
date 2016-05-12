@@ -1,0 +1,15 @@
+{
+  "name": "vojtechbartos.com",
+  "authors": [
+    "Vojtěch Bartoš <barvoj@seznam.cz>"
+  ],
+  "description": "Personal webpage.",
+  "license": "Proprietary",
+  "homepage": "http://vojtechbartos.com",
+  "private": true,
+  "dependencies": {
+    "jquery": "2.1.x",
+    "bootstrap": "3.3.x",
+    "nette.ajax.js": "^2.1.0"
+  }
+}

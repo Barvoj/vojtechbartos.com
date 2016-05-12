@@ -23,10 +23,12 @@
 </head>
 
 <body>
-<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+    <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
 
-{include content}
+    {include content}
 
-{block scripts}{/block}
+    {block scripts}{/block}
+
+    <script src="{$basePath}/js/script.js"></script>
 </body>
 </html>

@@ -1,8 +1,8 @@
 data:
   build: ./
-  volumes:
-  - ".:/var/www/project"
-  - "db:/docker-entrypoint-initdb.d"
+#  volumes:
+#  - ".:/var/www/project"
+#  - "db:/docker-entrypoint-initdb.d"
 nginx:
   image: bartos/nginx
   ports:
@@ -28,13 +28,14 @@ mysql:
     - data
   environment:
     - MYSQL_ROOT_PASSWORD=root
-#utils:
-#  image: bartos/utils
-#  volumes_from:
-#    - data
-composer:
-  restart: 'no'
-  image: composer/composer:php7
-  command: install
-  volumes:
-    - .:/app
+utils:
+  image: local/utils
+#  command: install
+  volumes_from:
+    - data
+#composer:
+#  restart: 'no'
+#  image: composer/composer:php7
+#  command: install
+#  volumes:
+#    - .:/app
