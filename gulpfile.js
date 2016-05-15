@@ -14,28 +14,28 @@ var exec = require('gulp-exec');
 var paths = {
     // Scripts in JS to be compiled into one file, order matters!
     scripts: [
-        'external/frontend/jquery/dist/jquery.min.js',
-        'external/frontend/bootstrap/dist/js/bootstrap.min.js',
+        'vendor/frontend/jquery/dist/jquery.min.js',
+        'vendor/frontend/bootstrap/dist/js/bootstrap.min.js',
         // Internal files
         'resources/js/*.js',
     ],
     stylesCore: [
-        'external/frontend/bootstrap/dist/css/bootstrap.min.css',
+        'vendor/frontend/bootstrap/dist/css/bootstrap.min.css',
     ],
     lessStyles: [
         'resources/css/*.less',
     ],
     // Font files to be copied.
     fonts: [
-        'external/frontend/bootstrap/dist/fonts/*'
+        'vendor/frontend/bootstrap/dist/fonts/*'
     ]
 };
 
 // Multiple destinations -- each of them should be git ignored.
 var destinations = {
-    scripts: 'www/src/js/',
-    styles: 'www/src/styles/',
-    fonts: 'www/src/fonts/'
+    scripts: 'www/js/',
+    styles: 'www/styles/',
+    fonts: 'www/fonts/'
 };
 
 // ====== General tasks =======
@@ -50,7 +50,7 @@ gulp.task('clean', function () {
         .pipe(clean());
 });
 
-gulp.task('default', ['styles', 'scripts', 'fonts']);
+gulp.task('default', ['styles', 'scripts']);
 
 // ====== Stylesheet preparation ======
 gulp.task('styles', function() {

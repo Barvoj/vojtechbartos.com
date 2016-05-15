@@ -39,6 +39,6 @@
     "nette/tester": "~1.7.0"
   },
   "config": {
-    "vendor-dir": "external/backend"
+    "vendor-dir": "vendor/backend"
   }
 }

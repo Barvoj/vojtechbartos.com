@@ -4,4 +4,9 @@ app/config/config.local.neon
 
 node_modules
 vendor
+
+www/fonts
+www/js
+www/styles
+
 composer.lock

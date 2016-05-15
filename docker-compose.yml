@@ -1,8 +1,10 @@
+#version: '2'
+#services:
 data:
   build: ./
-#  volumes:
-#  - ".:/var/www/project"
-#  - "db:/docker-entrypoint-initdb.d"
+  volumes:
+  - ".:/project"
+  - "db:/docker-entrypoint-initdb.d"
 nginx:
   image: bartos/nginx
   ports:
@@ -28,14 +30,29 @@ mysql:
     - data
   environment:
     - MYSQL_ROOT_PASSWORD=root
-utils:
-  image: local/utils
-#  command: install
+composer:
+  image: bartos/composer
+  command: install
   volumes_from:
     - data
-#composer:
-#  restart: 'no'
-#  image: composer/composer:php7
-#  command: install
-#  volumes:
-#    - .:/app
+npm:
+  image: node
+  command: install
+  volumes_from:
+    - data
+  working_dir: /project
+  entrypoint: ['npm', '--no-bin-link']
+bower:
+  image: node
+  command: install
+  volumes_from:
+      - data
+  working_dir: /project
+  entrypoint: ['node_modules/bower/bin/bower', '--allow-root']
+gulp:
+  image: node
+  command: default
+  volumes_from:
+    - data
+  working_dir: /project
+  entrypoint: ['node_modules/gulp-cli/bin/gulp.js']
