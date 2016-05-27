@@ -1,13 +1,13 @@
 <?php
 
-namespace VojtechBartos\Model\Queries;
+namespace Article\Model\Queries;
 
-use VojtechBartos\Model\Entities\User;
+use Article\Model\Entities\Article;
 use Doctrine\ORM\QueryBuilder;
 use Kdyby\Doctrine\QueryObject;
 use Kdyby\Persistence\Queryable;
 
-class UserQuery extends QueryObject
+class ArticleQuery extends QueryObject
 {
     /** @var array */
     private $filter = [];
@@ -16,13 +16,12 @@ class UserQuery extends QueryObject
     private $select = [];
 
     /**
-     * @param string $username
-     * @return UserQuery
+     * @return ArticleQuery
      */
-    public function byUsername(string $username) : UserQuery
+    public function published() : ArticleQuery
     {
-        $this->filter[] = function (QueryBuilder $qb) use ($username) {
-            $qb->andWhere('u.username = :username')->setParameter('username', $username);
+        $this->filter[] = function (QueryBuilder $qb) {
+            $qb->andWhere('a.published != null');
         };
         return $this;
     }
@@ -31,7 +30,7 @@ class UserQuery extends QueryObject
      * @param Queryable $repository
      * @return QueryBuilder
      */
-    protected function doCreateQuery(Queryable $repository)
+    protected function doCreateQuery(Queryable $repository) : QueryBuilder
     {
         $qb = $this->createBasicDql($repository);
 
@@ -39,7 +38,7 @@ class UserQuery extends QueryObject
             $modifier($qb);
         }
 
-        return $qb->addOrderBy('u.id', 'DESC');
+        return $qb->addOrderBy('a.id', 'DESC');
     }
 
     /**
@@ -48,17 +47,17 @@ class UserQuery extends QueryObject
      */
     protected function doCreateCountQuery(Queryable $repository) : QueryBuilder
     {
-        return $this->createBasicDql($repository)->select('COUNT(q.id)');
+        return $this->createBasicDql($repository)->select('COUNT(a.id)');
     }
 
     /**
      * @param Queryable $repository
      * @return QueryBuilder
      */
-    private function createBasicDql(Queryable $repository) : QueryBuilder
+    private function createBasicDql(Queryable $repository)
     {
         $qb = $repository->createQueryBuilder()
-            ->select('u')->from(User::class, 'u');
+            ->select('a')->from(Article::class, 'a');
 
         foreach ($this->filter as $modifier) {
             $modifier($qb);

@@ -4,3 +4,6 @@ INSERT INTO `vojtechbartos`.`languages` (`language_id`, `code`, `locale`, `local
 
 INSERT INTO `vojtechbartos`.`users` (`user_id`, `username`, `email`, `first_name`, `last_name`, `password`, `language_id`) VALUES
   (1, 'admin', 'administrator@vojtechbartos.cz', '', '', '$2y$10$GDnStWCZlRBvTJNndKMql.Mepehu2ZrbhzVFG5j0aGfeTZ21VqD3W', 1); -- password: hcAdmin
+
+INSERT INTO `vojtechbartos`.`articles` (`article_id`, `language_id`, `user_id`, `title`, `content`) VALUES
+  (1, 1, 1, 'Prvni clanek', 'Toto je vzorovy clanek');

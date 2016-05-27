@@ -51,6 +51,9 @@ decorator:
     Nette\Application\UI\Form:
         setup:
             - setTranslator(@translation.default)
+    Libs\Application\UI\FormControl:
+        setup:
+            - injectFormFactory(@Libs\Application\UI\FormFactory)
 
 services:
     router: VojtechBartos\Router\RouterFactory::createRouter
@@ -60,6 +63,8 @@ services:
     - VojtechBartos\Components\Forms\SignInForm\SignInFormFactory
 
 extensions:
+    - Article\DI\ArticleExtension
+
     console: Kdyby\Console\DI\ConsoleExtension
     events: Kdyby\Events\DI\EventsExtension
     annotations: Kdyby\Annotations\DI\AnnotationsExtension

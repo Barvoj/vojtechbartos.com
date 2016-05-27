@@ -75,9 +75,15 @@ CREATE TABLE `vojtechbartos`.`articles` (
   COMMENT 'Osolený hash hesla',
   `language_id`   INT          NOT NULL DEFAULT 1
   COMMENT 'Jazyk pro komunikaci s uživatelem',
+  `user_id`   INT          NOT NULL DEFAULT 1
+  COMMENT 'Author',
+  `published` DATETIME DEFAULT NULL
+  COMMENT 'Datum publikování',
   PRIMARY KEY (`article_id`),
   FOREIGN KEY (`language_id`) REFERENCES `vojtechbartos`.`languages` (`language_id`)
-    ON DELETE RESTRICT
+    ON DELETE RESTRICT,
+  FOREIGN KEY (`user_id`) REFERENCES `vojtechbartos`.`users` (`user_id`)
+    ON DELETE CASCADE
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8

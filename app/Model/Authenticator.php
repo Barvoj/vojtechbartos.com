@@ -45,6 +45,6 @@ class Authenticator extends Object implements IAuthenticator
             $user->setPassword(Passwords::hash($password));
         }
 
-        return new Identity($user->getId(), ['admin'], $user);
+        return new Identity($user->getId(), $roles = null, $user);
     }
 }

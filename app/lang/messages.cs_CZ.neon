@@ -9,3 +9,8 @@ sign:
     remember: Zapamatovat
     sign_in: Přihlásit
     sign_out: Odhlásit
+
+article:
+    title: Název
+    content: Text
+    save: Uložit

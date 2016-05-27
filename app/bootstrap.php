@@ -13,6 +13,7 @@ $configurator->setTempDirectory(__DIR__ . '/../temp');
 
 $configurator->createRobotLoader()
     ->addDirectory(__DIR__)
+    ->addDirectory(__DIR__ . '/../extensions')
     ->addDirectory(__DIR__ . '/../libs')
     ->register();
 

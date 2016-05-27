@@ -1,0 +1,11 @@
+services:
+    # Facades
+    - Article\Model\Facades\ArticleFacade
+    # Repositories
+    - Article\Model\Repositories\ArticleRepository
+
+    # Entities
+    - Article\Model\Entities\Article
+
+    # Components
+    - Article\Components\ArticleAddForm\ArticleAddFormFactory

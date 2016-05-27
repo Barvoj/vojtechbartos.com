@@ -8,7 +8,6 @@ use Nette\Application\Routers\RouteList;
 
 class RouterFactory
 {
-
     /**
      * @return IRouter
      */
@@ -18,7 +17,7 @@ class RouterFactory
 
         $router = new RouteList;
 
-        $router[] = new Route("<presenter>/<action>[/<id>]", ['presenter' => 'Home', 'action' => 'default']);
+        $router[] = new Route("[<locale=cs cs|en>/]<presenter>/<action>[/<id>]", ['presenter' => 'Home', 'action' => 'default']);
 
         return $router;
     }

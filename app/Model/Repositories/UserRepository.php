@@ -34,7 +34,7 @@ class UserRepository extends Object
      * @param Query $query
      * @return User
      */
-    public function fetchOne(Query $query)
+    public function fetchOne(Query $query) : User
     {
         return $this->users->fetchOne($query);
     }
