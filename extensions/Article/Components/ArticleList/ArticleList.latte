@@ -1,0 +1,3 @@
+{foreach $articles as $article}
+    {_"messages.article.title"}: {$article->getTitle()} <a href="{plink edit $article->getId()}">Upravit</a><br>
+{/foreach}

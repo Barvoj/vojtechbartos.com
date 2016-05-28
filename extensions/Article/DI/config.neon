@@ -9,3 +9,5 @@ services:
 
     # Components
     - Article\Components\ArticleAddForm\ArticleAddFormFactory
+    - Article\Components\ArticleEditForm\ArticleEditFormFactory
+    - Article\Components\ArticleList\ArticleListFactory

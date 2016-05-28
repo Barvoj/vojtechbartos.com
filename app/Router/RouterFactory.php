@@ -3,7 +3,6 @@
 namespace VojtechBartos\Router;
 
 use Nette\Application\IRouter;
-use Nette\Application\Routers\Route;
 use Nette\Application\Routers\RouteList;
 
 class RouterFactory
@@ -17,7 +16,7 @@ class RouterFactory
 
         $router = new RouteList;
 
-        $router[] = new Route("[<locale=cs cs|en>/]<presenter>/<action>[/<id>]", ['presenter' => 'Home', 'action' => 'default']);
+//        $router[] = new Route("[<locale=cs cs|en>/]<presenter>/<action>[/<id>]", ['presenter' => 'Home', 'action' => 'default']);
 
         return $router;
     }

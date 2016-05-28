@@ -32,7 +32,7 @@ class ArticleExtension extends CompilerExtension implements IEntityProvider
     public function getRouter() : IRouter
     {
         $public = new RouteList('Article');
-        $public[] = new Route('[<locale=cs cs|en>/]article/<action>[/<id>]', 'Article:default');
+        $public[] = new Route('[<locale=cs cs|en>/]article/<action>[/<id>]', 'Article:list');
 
         return $public;
     }

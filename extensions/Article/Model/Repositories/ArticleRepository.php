@@ -3,7 +3,6 @@
 namespace Article\Model\Repositories;
 
 use Article\Model\Entities\Article;
-use Kdyby\Doctrine\EntityDao;
 use Kdyby\Doctrine\EntityManager;
 use Kdyby\Doctrine\EntityRepository;
 use Kdyby\Persistence\Query;
@@ -30,9 +29,17 @@ class ArticleRepository extends Object
      * @param int $id
      * @return Article
      */
-    public function find(int $id) : Article
+    public function get(int $id) : Article
     {
         return $this->articles->find($id);
+    }
+
+    /**
+     * @return Article[]
+     */
+    public function FindAll() : array
+    {
+        return $this->articles->findAll();
     }
 
     /**
@@ -50,5 +57,12 @@ class ArticleRepository extends Object
     public function insert(Article $article)
     {
         $this->em->persist($article);
+    }
+
+    /**
+     * @param Article $article
+     */
+    public function update(Article $article)
+    {
     }
 }
