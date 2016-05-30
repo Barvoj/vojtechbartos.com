@@ -20,18 +20,18 @@ class CompilerExtension extends \Nette\DI\CompilerExtension
     /**
      * @param IRouter $router
      */
-    protected function setRouter(IRouter $router)
+    protected function addRouter(IRouter $router)
     {
         $builder = $this->getContainerBuilder();
 
-        $builder->getDefinition('router')
-            ->addSetup('offsetSet', [null, $router]);
+        $builder->getDefinition('router.factory')
+            ->addSetup('add', [$router]);
     }
 
     /**
      * @param array $mapping
      */
-    protected function setPresenterMapping(array $mapping)
+    protected function addPresenterMapping(array $mapping)
     {
         $builder = $this->getContainerBuilder();
 

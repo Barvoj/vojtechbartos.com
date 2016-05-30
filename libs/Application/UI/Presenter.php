@@ -2,10 +2,12 @@
 
 namespace Libs\Application\UI;
 
+use Kdyby\Autowired\AutowireComponentFactories;
 use Kdyby\Translation\ITranslator;
 
 class Presenter extends \Nette\Application\UI\Presenter
 {
+    use AutowireComponentFactories;
 
     /** @var ITranslator */
     private $translator;
@@ -16,6 +18,17 @@ class Presenter extends \Nette\Application\UI\Presenter
     public function injectTranslator(ITranslator $translator)
     {
         $this->translator = $translator;
+    }
+
+    /**
+     * @return string|void
+     */
+    public function findLayoutTemplateFile()
+    {
+        if ($this->layout === FALSE) {
+            return;
+        }
+        return __DIR__ . '/../../../app/presenters/templates/@layout.latte';
     }
 
     /**

@@ -10,11 +10,6 @@ use Nette\Application\Routers\RouteList;
 
 class ArticleExtension extends CompilerExtension implements IEntityProvider
 {
-    /** @var array */
-    public $defaults = [
-        'testName' => 'New test'
-    ];
-
     public function loadConfiguration()
     {
         $this->addConfig(__DIR__ . '/config.neon');
@@ -22,8 +17,8 @@ class ArticleExtension extends CompilerExtension implements IEntityProvider
 
     public function beforeCompile()
     {
-        $this->setPresenterMapping(['Article' => 'Article\\Presenters\\*Presenter']);
-        $this->setRouter($this->getRouter());
+        $this->addPresenterMapping(['Article' => 'Article\\Presenters\\*Presenter']);
+        $this->addRouter($this->getRouter());
     }
 
     /**
@@ -31,10 +26,10 @@ class ArticleExtension extends CompilerExtension implements IEntityProvider
      */
     public function getRouter() : IRouter
     {
-        $public = new RouteList('Article');
-        $public[] = new Route('[<locale=cs cs|en>/]article/<action>[/<id>]', 'Article:list');
+        $rourer = new RouteList('Article');
+        $rourer[] = new Route('[<locale=cs cs|en>/]article/<action>[/<id>]', 'Article:list');
 
-        return $public;
+        return $rourer;
     }
 
     public function getEntityMappings() : array

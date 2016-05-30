@@ -17,15 +17,6 @@ class ArticlePresenter extends Presenter
     /** @var ArticleFacade */
     protected $articleFacade;
 
-    /** @var ArticleAddFormFactory */
-    protected $articleAddFormFactory;
-
-    /** @var ArticleEditFormFactory */
-    protected $articleEditFormFactory;
-
-    /** @var ArticleListFactory */
-    protected $articleListFactory;
-
     /** @var Article */
     protected $article;
 
@@ -47,34 +38,11 @@ class ArticlePresenter extends Presenter
 
     /**
      * @param ArticleAddFormFactory $articleAddFormFactory
-     */
-    public function injectArticleAddFormFactory(ArticleAddFormFactory $articleAddFormFactory)
-    {
-        $this->articleAddFormFactory = $articleAddFormFactory;
-    }
-
-    /**
-     * @param ArticleEditFormFactory $articleEditFormFactory
-     */
-    public function injectArticleEditFormFactory(ArticleEditFormFactory $articleEditFormFactory)
-    {
-        $this->articleEditFormFactory = $articleEditFormFactory;
-    }
-
-    /**
-     * @param ArticleListFactory $articleListFactory
-     */
-    public function injectArticleListFactory(ArticleListFactory $articleListFactory)
-    {
-        $this->articleListFactory = $articleListFactory;
-    }
-
-    /**
      * @return ArticleAddForm
      */
-    public function createComponentArticleAdd() : ArticleAddForm
+    public function createComponentArticleAdd(ArticleAddFormFactory $articleAddFormFactory) : ArticleAddForm
     {
-        $component = $this->articleAddFormFactory->create();
+        $component = $articleAddFormFactory->create();
 
         $component->onSuccess[] = function (Article $article) {
             $this->flashMessage("Article {$article->getTitle()} created.");
@@ -85,11 +53,12 @@ class ArticlePresenter extends Presenter
     }
 
     /**
+     * @param ArticleEditFormFactory $articleEditFormFactory
      * @return ArticleEditForm
      */
-    public function createComponentArticleEdit() : ArticleEditForm
+    public function createComponentArticleEdit(ArticleEditFormFactory $articleEditFormFactory) : ArticleEditForm
     {
-        $component = $this->articleEditFormFactory->create($this->article);
+        $component = $articleEditFormFactory->create($this->article);
 
         $component->onSuccess[] = function (Article $article) {
             $this->flashMessage("Article {$article->getTitle()} updated.");
@@ -100,11 +69,12 @@ class ArticlePresenter extends Presenter
     }
 
     /**
+     * @param ArticleListFactory $articleListFactory
      * @return ArticleList
      */
-    public function createComponentArticles() : ArticleList
+    public function createComponentArticles(ArticleListFactory $articleListFactory) : ArticleList
     {
-        $component = $this->articleListFactory->create();
+        $component = $articleListFactory->create();
 
         return $component;
     }
