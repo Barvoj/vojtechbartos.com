@@ -1,9 +1,9 @@
 <?php
 
-namespace VojtechBartos\Presenters;
+namespace Auth\Presenters;
 
 use Libs\Application\UI\Presenter;
-use VojtechBartos\Components\Forms\SignInForm\SignInFormFactory;
+use Auth\Components\Forms\SignInForm\SignInFormFactory;
 use Nette\Application\UI\Form;
 
 class SignPresenter extends Presenter
@@ -28,7 +28,7 @@ class SignPresenter extends Presenter
     {
         // if user already logged in then redirect back
         if ($this->getUser()->isLoggedIn()) {
-            $this->redirect('Home:default');
+            $this->redirect(':Home:default');
         }
     }
 
@@ -51,7 +51,7 @@ class SignPresenter extends Presenter
         $form = $this->signInFormFactory->create();
         $form->onSuccess[] = function () {
             $this->flashMessage($this->translate('messages.sign.you_have_been_signed_in'));
-            $this->redirect('Home:default');
+            $this->redirect(':Home:default');
         };
 
         return $form;

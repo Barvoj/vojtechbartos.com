@@ -1,6 +1,6 @@
 <?php
 
-namespace VojtechBartos\Model\Entities;
+namespace Auth\Model\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
 use Nette\Object;

@@ -1,8 +1,8 @@
 <?php
 
-namespace VojtechBartos\Model\Repositories;
+namespace Auth\Model\Repositories;
 
-use VojtechBartos\Model\Entities\User;
+use Auth\Model\Entities\User;
 use Kdyby\Doctrine\EntityDao;
 use Kdyby\Doctrine\EntityRepository;
 use Kdyby\Persistence\Query;

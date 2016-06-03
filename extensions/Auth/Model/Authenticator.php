@@ -1,9 +1,9 @@
 <?php
 
-namespace VojtechBartos\Model;
+namespace Auth\Model;
 
-use VojtechBartos\Model\Queries\UserQuery;
-use VojtechBartos\Model\Repositories\UserRepository;
+use Auth\Model\Queries\UserQuery;
+use Auth\Model\Repositories\UserRepository;
 use Nette\Object;
 use Nette\Security\AuthenticationException;
 use Nette\Security\IAuthenticator;

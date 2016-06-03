@@ -1,0 +1,11 @@
+services:
+    - Auth\Model\Authenticator
+
+    # components
+    - Auth\Components\Forms\SignInForm\SignInFormFactory
+
+    # Repositories
+    - Auth\Model\Repositories\UserRepository(@doctrine.dao(Auth\Model\Entities\User))
+
+    # Entities
+    - Auth\Model\Entities\User

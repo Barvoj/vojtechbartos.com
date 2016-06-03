@@ -1,6 +1,6 @@
 <?php
 
-namespace Article\DI;
+namespace Auth\DI;
 
 use Kdyby\Doctrine\DI\IEntityProvider;
 use Libs\DI\CompilerExtension;
@@ -8,7 +8,7 @@ use Nette\Application\IRouter;
 use Nette\Application\Routers\Route;
 use Nette\Application\Routers\RouteList;
 
-class ArticleExtension extends CompilerExtension implements IEntityProvider
+class AuthExtension extends CompilerExtension implements IEntityProvider
 {
     public function loadConfiguration()
     {
@@ -17,7 +17,7 @@ class ArticleExtension extends CompilerExtension implements IEntityProvider
 
     public function beforeCompile()
     {
-        $this->addPresenterMapping(['Article' => 'Article\\Presenters\\*Presenter']);
+        $this->addPresenterMapping(['Auth' => 'Auth\\Presenters\\*Presenter']);
         $this->addRouter($this->getRouter());
     }
 
@@ -26,8 +26,8 @@ class ArticleExtension extends CompilerExtension implements IEntityProvider
      */
     public function getRouter() : IRouter
     {
-        $router = new RouteList('Article');
-        $router[] = new Route('[<locale=cs cs|en>/]article/<action>[/<id>]', 'Article:list');
+        $router = new RouteList('Auth');
+        $router[] = new Route('[<locale=cs cs|en>/]sign/<action>[/<id>]', 'Sign:in');
 
         return $router;
     }
@@ -35,7 +35,7 @@ class ArticleExtension extends CompilerExtension implements IEntityProvider
     public function getEntityMappings() : array
     {
         return [
-            'Article' => __DIR__ . '/..',
+            'Auth' => __DIR__ . '/..',
         ];
     }
 }

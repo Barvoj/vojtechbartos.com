@@ -1,8 +1,8 @@
 <?php
 
-namespace VojtechBartos\Model\Queries;
+namespace Auth\Model\Queries;
 
-use VojtechBartos\Model\Entities\User;
+use Auth\Model\Entities\User;
 use Doctrine\ORM\QueryBuilder;
 use Kdyby\Doctrine\QueryObject;
 use Kdyby\Persistence\Queryable;

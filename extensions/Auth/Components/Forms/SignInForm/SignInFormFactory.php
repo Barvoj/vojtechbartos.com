@@ -1,6 +1,6 @@
 <?php
 
-namespace VojtechBartos\Components\Forms\SignInForm;
+namespace Auth\Components\Forms\SignInForm;
 
 interface SignInFormFactory
 {
