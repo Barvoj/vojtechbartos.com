@@ -1,6 +1,6 @@
 <?php
 
-namespace Auth\Model;
+namespace Auth;
 
 use Auth\Model\Queries\UserQuery;
 use Auth\Model\Repositories\UserRepository;
@@ -51,6 +51,6 @@ class Authenticator extends Object implements IAuthenticator
             'lastName' => $user->getLastName(),
         ];
 
-        return new Identity($user->getId(), $roles = null, $data);
+        return new Identity($user->getId(), $roles = ['admin'], $data);
     }
 }

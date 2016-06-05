@@ -1,5 +1,6 @@
 services:
-    - Auth\Model\Authenticator
+    - Auth\Authenticator
+    - Auth\AuthorizatorFactory::create
 
     # components
     - Auth\Components\Forms\SignInForm\SignInFormFactory

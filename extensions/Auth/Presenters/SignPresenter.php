@@ -11,6 +11,9 @@ class SignPresenter extends Presenter
     /** @var SignInFormFactory */
     private $signInFormFactory;
 
+    /** @persistent */
+    public $backlink;
+
     /**
      * SignPresenter constructor.
      * @param SignInFormFactory $signFormFactory
@@ -51,6 +54,7 @@ class SignPresenter extends Presenter
         $form = $this->signInFormFactory->create();
         $form->onSuccess[] = function () {
             $this->flashMessage($this->translate('messages.sign.you_have_been_signed_in'));
+            $this->restoreRequest($this->backlink);
             $this->redirect(':Home:default');
         };
 

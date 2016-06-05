@@ -14,6 +14,9 @@ use Article\Model\Entities\Article as EntityArticle;
 use Article\Model\Facades\ArticleFacade;
 use Libs\Application\UI\Presenter;
 
+/**
+ * @acl
+ */
 class ArticlePresenter extends Presenter
 {
     /** @var ArticleFacade */
@@ -36,6 +39,10 @@ class ArticlePresenter extends Presenter
     public function actionShow(string $id)
     {
         $this->article = $this->articleFacade->get((int) $id);
+    }
+
+    public function handleAbc() {
+        
     }
 
     /**
