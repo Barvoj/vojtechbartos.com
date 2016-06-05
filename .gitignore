@@ -7,6 +7,6 @@ vendor
 
 www/fonts
 www/js
-www/styles
+www/css
 
 composer.lock

@@ -27,5 +27,4 @@ class ArticleList extends Control
         $this->getTemplate()->articles = $this->articleFacade->findAll();
         $this->getTemplate()->render();
     }
-
 }

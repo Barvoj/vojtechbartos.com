@@ -1,4 +1,6 @@
 services:
+    - Libs\Text\TexyPreprocesor
+
     # Facades
     - Article\Model\Facades\ArticleFacade
     # Repositories
@@ -11,3 +13,4 @@ services:
     - Article\Components\ArticleAddForm\ArticleAddFormFactory
     - Article\Components\ArticleEditForm\ArticleEditFormFactory
     - Article\Components\ArticleList\ArticleListFactory
+    - Article\Components\Article\ArticleFactory
