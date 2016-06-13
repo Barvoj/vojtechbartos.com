@@ -37,7 +37,7 @@ class ArticleRepository extends Object
     /**
      * @return Article[]
      */
-    public function FindAll() : array
+    public function findAll() : array
     {
         return $this->articles->findAll();
     }

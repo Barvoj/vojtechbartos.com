@@ -25,24 +25,28 @@ class ArticlePresenter extends Presenter
     /** @var EntityArticle */
     protected $article;
 
+    /** @var EntityArticle[] */
+    protected $articles;
+
     /**
-     * @param string $id
+     * @param int $id
      */
-    public function actionEdit(string $id)
+    public function actionEdit(int $id)
     {
-        $this->article = $this->articleFacade->get((int) $id);
+        $this->article = $this->articleFacade->get($id);
     }
 
     /**
-     * @param string $id
+     * @param int $id
      */
-    public function actionShow(string $id)
+    public function actionShow(int $id)
     {
-        $this->article = $this->articleFacade->get((int) $id);
+        $this->article = $this->articleFacade->get($id);
     }
 
-    public function handleAbc() {
-        
+    public function actionList()
+    {
+        $this->articles = $this->articleFacade->findAll();
     }
 
     /**
@@ -94,7 +98,11 @@ class ArticlePresenter extends Presenter
      */
     public function createComponentArticles(ArticleListFactory $articleListFactory) : ArticleList
     {
-        $component = $articleListFactory->create();
+        $component = $articleListFactory->create($this->articles);
+
+        $component->setShowLink($this->lazyLink('show'));
+        $component->setPublishLink($component->lazyLink('publish!'));
+        $component->setEditLink($this->lazyLink('edit'));
 
         return $component;
     }

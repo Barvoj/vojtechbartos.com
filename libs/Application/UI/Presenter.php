@@ -2,10 +2,12 @@
 
 namespace Libs\Application\UI;
 
+use Auth\AccessControl;
+use Auth\Exceptions\NotSignInException;
 use Kdyby\Autowired\AutowireComponentFactories;
 use Kdyby\Translation\ITranslator;
 use Nette\Application\ForbiddenRequestException;
-use Nette\Application\UI\PresenterComponentReflection;
+use Nette\Reflection\ClassType;
 use Nette\Reflection\Method;
 
 class Presenter extends \Nette\Application\UI\Presenter
@@ -15,33 +17,19 @@ class Presenter extends \Nette\Application\UI\Presenter
     /** @var ITranslator */
     private $translator;
 
+    /** @var AccessControl */
+    private $accessControl;
+
     /**
-     * @param PresenterComponentReflection|Method $element
+     * @param ClassType|Method $element
      * @throws ForbiddenRequestException
      */
     public function checkRequirements($element)
     {
-        $acl = false;
-        if ($element instanceof PresenterComponentReflection) {
-            /** lookup */
-            do {
-                $acl = $acl ?: $element->getAnnotation('acl');
-            } while (!$acl && $element = $element->getParentClass());
-        } else if ($element instanceof Method) {
-            $primary = $element->getAnnotation('acl');
-        }
-
-        if (!$acl) {
-            return;
-        }
-
-        $isAllowed = $this->getUser()->isAllowed($this->getName() ,$this->getAction());
-        if (!$isAllowed) {
-            if ($this->getUser()->isLoggedIn()) {
-                throw new ForbiddenRequestException();
-            } else {
-                $this->redirectToSignIn();
-            }
+        try {
+            $this->accessControl->checkRequirements($this, $element);
+        } catch (NotSignInException $ex) {
+            $this->redirectToSignIn();
         }
     }
 
@@ -80,5 +68,13 @@ class Presenter extends \Nette\Application\UI\Presenter
     public function injectTranslator(ITranslator $translator)
     {
         $this->translator = $translator;
+    }
+
+    /**
+     * @param AccessControl $accessControl
+     */
+    public function injectAccessControl(AccessControl $accessControl)
+    {
+        $this->accessControl = $accessControl;
     }
 }

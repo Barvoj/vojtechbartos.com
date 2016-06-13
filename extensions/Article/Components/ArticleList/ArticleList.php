@@ -3,28 +3,101 @@
 namespace Article\Components\ArticleList;
 
 
-use Article\Model\Facades\ArticleFacade;
+use Article\Components\ArticleListItem\ArticleListItemFactory;
+use Article\Model\Entities\Article;
 use Nette\Application\UI\Control;
+use Nette\Application\UI\Link;
+use Nette\Application\UI\Multiplier;
 
 class ArticleList extends Control
 {
-    /** @var ArticleFacade */
-    protected $articleFacade;
+    /** @var Article[] */
+    protected $articles;
+
+    /** @var Link */
+    protected $showLink;
+
+    /** @var Link */
+    protected $publishLink;
+
+    /** @var Link */
+    protected $editLink;
+
+    /** @var ArticleListItemFactory */
+    private $listItemFacade;
 
     /**
-     * ArticleList constructor.
-     * @param ArticleFacade $articleFacade
+     * @param array $articles
+     * @param ArticleListItemFactory $listItemFacade
      */
-    public function __construct(ArticleFacade $articleFacade)
+    public function __construct(array $articles, ArticleListItemFactory $listItemFacade)
     {
         parent::__construct();
-        $this->articleFacade = $articleFacade;
+        $this->articles = $articles;
+        $this->listItemFacade = $listItemFacade;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function handlePublish(int $id)
+    {
+        dump($id);
     }
 
     public function render()
     {
         $this->getTemplate()->setFile(__DIR__ . '/ArticleList.latte');
-        $this->getTemplate()->articles = $this->articleFacade->findAll();
+        $this->getTemplate()->showLink = $this->showLink;
+        $this->getTemplate()->publishLink = $this->publishLink;
+        $this->getTemplate()->editLink = $this->editLink;
+        $this->getTemplate()->articles = $this->articles;
         $this->getTemplate()->render();
+    }
+
+    public function createComponentItem()
+    {
+        return new Multiplier(function ($key) {
+            $component = $this->listItemFacade->create($this->articles[$key]);
+            
+            $component->setShowLink($this->showLink);
+            $component->setPublishLink($this->publishLink);
+            $component->setEditLink($this->editLink);
+
+            return $component;
+        });
+    }
+
+    /**
+     * @param Link $showLink
+     * @return ArticleList
+     */
+    public function setShowLink(Link $showLink) : ArticleList
+    {
+        $this->showLink = $showLink;
+
+        return $this;
+    }
+
+    /**
+     * @param Link $publishLink
+     * @return ArticleList
+     */
+    public function setPublishLink(Link $publishLink) : ArticleList
+    {
+        $this->publishLink = $publishLink;
+
+        return $this;
+    }
+
+    /**
+     * @param Link $editLink
+     * @return ArticleList
+     */
+    public function setEditLink(Link $editLink) : ArticleList
+    {
+        $this->editLink = $editLink;
+
+        return $this;
     }
 }

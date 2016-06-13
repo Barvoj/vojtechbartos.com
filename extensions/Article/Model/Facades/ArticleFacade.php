@@ -39,7 +39,7 @@ class ArticleFacade
      */
     public function findAll() : array
     {
-        return $this->articleRepository->FindAll();
+        return $this->articleRepository->findAll();
     }
 
     /**

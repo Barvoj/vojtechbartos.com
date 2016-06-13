@@ -1,0 +1,9 @@
+<div class="row">
+    <div class="col-md-9">{$article->getTitle()}</div>
+    <div class="col-md-1"><a n:ifset="$showLink" href="{$showLink}">Zobrazit</a></div>
+    <div class="col-md-1"><a n:ifset="$publishLink"  href="{$publishLink}">Publikovat</a></div>
+    <div class="col-md-1"><a n:ifset="$editLink"  href="{$editLink}">Upravit</a><br></div>
+</div>
+
+
+

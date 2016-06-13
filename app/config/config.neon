@@ -1,29 +1,34 @@
 
 php:
-	date.timezone: Europe/Prague
+    date.timezone: Europe/Prague
+
+
+latte:
+    macros:
+        - Libs\Latte\FormMacros
 
 
 application:
-	debugger: true
-	errorPresenter: Error
-	mapping:
-		*: VojtechBartos\Presenters\*Presenter
+    debugger: true
+    errorPresenter: Error
+    mapping:
+        *: VojtechBartos\Presenters\*Presenter
 
 di:
     debugger: true
 
 routing:
-	debugger: true
+    debugger: true
 
 
 security:
-	debugger: true
+    debugger: true
 
 
 session:
-	autoStart: true
-	expiration: 14 days
-#	savePath: "%tempDir%/session"
+    autoStart: true
+    expiration: 14 days
+#    savePath: "%tempDir%/session"
 
 console:
     url: http://vojtechbartos.com
@@ -38,9 +43,9 @@ doctrine:
         VojtechBartos: %appDir%
 
 translation:
-	default: cs
-	whitelist: [cs, en]
-	#fallback: [cs_CZ, cs]
+    default: cs
+    whitelist: [cs, en]
+    #fallback: [cs_CZ, cs]
 
 migrations:
     dir: %appDir%/../db # migrations base directory
@@ -51,6 +56,7 @@ decorator:
     Nette\Application\UI\Form:
         setup:
             - setTranslator(@translation.default)
+            - setRenderer(@renderer)
     Libs\Application\UI\FormControl:
         setup:
             - injectFormFactory(@Libs\Application\UI\FormFactory)
@@ -58,6 +64,7 @@ decorator:
 services:
     router.factory: VojtechBartos\Router\RouterFactory
     router: @router.factory::create
+    renderer: Libs\Forms\Rendering\BootstrapFormRenderer::create
     - Libs\Application\UI\FormFactory
 
 extensions:
