@@ -1,9 +1,9 @@
 <?php
 
-namespace Article\Presenters;
+namespace Article\AdminModule\Presenters;
 
-use Article\Components\Article\Article;
-use Article\Components\Article\ArticleFactory;
+use Article\Components\ArticleDetail\ArticleDetail;
+use Article\Components\ArticleDetail\ArticleDetailFactory;
 use Article\Components\ArticleAddForm\ArticleAddForm;
 use Article\Components\ArticleAddForm\ArticleAddFormFactory;
 use Article\Components\ArticleEditForm\ArticleEditForm;
@@ -33,6 +33,7 @@ class ArticlePresenter extends Presenter
      */
     public function actionEdit(int $id)
     {
+        // @todo check access
         $this->article = $this->articleFacade->get($id);
     }
 
@@ -41,6 +42,7 @@ class ArticlePresenter extends Presenter
      */
     public function actionShow(int $id)
     {
+        // @todo check access
         $this->article = $this->articleFacade->get($id);
     }
 
@@ -50,10 +52,10 @@ class ArticlePresenter extends Presenter
     }
 
     /**
-     * @param ArticleFactory $articleFactory
-     * @return Article
+     * @param ArticleDetailFactory $articleFactory
+     * @return ArticleDetail
      */
-    public function createComponentArticle(ArticleFactory $articleFactory) : Article
+    public function createComponentDetail(ArticleDetailFactory $articleFactory) : ArticleDetail
     {
         $component = $articleFactory->create($this->article);
 

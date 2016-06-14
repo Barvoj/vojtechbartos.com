@@ -1,15 +1,15 @@
 <?php
 
-namespace Article\Components\Article;
+namespace Article\Components\ArticleDetail;
 
 
 use Article\Model\Entities\Article as EntityArticle;
 
-interface ArticleFactory
+interface ArticleDetailFactory
 {
     /**
      * @param EntityArticle $article
-     * @return Article
+     * @return ArticleDetail
      */
     public function create(EntityArticle $article);
 }

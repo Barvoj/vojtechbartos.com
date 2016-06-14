@@ -14,4 +14,4 @@ services:
     - Article\Components\ArticleEditForm\ArticleEditFormFactory
     - Article\Components\ArticleList\ArticleListFactory
     - Article\Components\ArticleListItem\ArticleListItemFactory
-    - Article\Components\Article\ArticleFactory
+    - Article\Components\ArticleDetail\ArticleDetailFactory

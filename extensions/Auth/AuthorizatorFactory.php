@@ -23,10 +23,10 @@ class AuthorizatorFactory
         $acl->addRole('guest');
         $acl->addRole('admin', 'guest');
 
-        $acl->addResource('Article:Article');
+        $acl->addResource('Article:Admin:Article');
 
-        $acl->allow('guest', 'Article:Article', 'show');
-        $acl->allow('admin', 'Article:Article', ['list', 'add', 'edit']);
+        $acl->allow('guest', 'Article:Admin:Article', 'show');
+        $acl->allow('admin', 'Article:Admin:Article', ['list', 'add', 'edit']);
 
         return $acl;
     }

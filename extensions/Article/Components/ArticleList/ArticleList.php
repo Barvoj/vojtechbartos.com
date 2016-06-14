@@ -59,10 +59,18 @@ class ArticleList extends Control
     {
         return new Multiplier(function ($key) {
             $component = $this->listItemFacade->create($this->articles[$key]);
-            
-            $component->setShowLink($this->showLink);
-            $component->setPublishLink($this->publishLink);
-            $component->setEditLink($this->editLink);
+
+            if ($this->showLink) {
+                $component->setShowLink($this->showLink);
+            }
+
+            if ($this->publishLink) {
+                $component->setPublishLink($this->publishLink);
+            }
+
+            if ($this->editLink) {
+                $component->setEditLink($this->editLink);
+            }
 
             return $component;
         });

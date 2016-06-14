@@ -1,16 +1,17 @@
 <?php
 
-namespace Article\Components\Article;
+namespace Article\Components\ArticleDetail;
 
 
 use Article\Model\Entities\Article as EntityArticle;
 use Libs\Application\UI\Control;
 use Libs\Text\Preprocesor;
 
-class Article extends Control
+class ArticleDetail extends Control
 {
     /** @var EntityArticle */
     protected $article;
+
     /** @var Preprocesor */
     private $preprocesor;
 
@@ -28,7 +29,7 @@ class Article extends Control
 
     public function render()
     {
-        $this->getTemplate()->setFile(__DIR__ . '/Article.latte');
+        $this->getTemplate()->setFile(__DIR__ . '/ArticleDetail.latte');
 
         $this->template->title = $this->article->getTitle();
         $this->template->content = $this->preprocesor->process($this->article->getContent());
