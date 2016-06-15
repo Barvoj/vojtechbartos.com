@@ -21,7 +21,6 @@ class DetailPresenter extends Presenter
      */
     public function actionDefault(int $id)
     {
-        // @todo check access
         $this->article = $this->articleFacade->get($id);
     }
 
