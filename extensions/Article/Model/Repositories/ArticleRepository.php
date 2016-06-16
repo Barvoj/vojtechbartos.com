@@ -65,4 +65,12 @@ class ArticleRepository extends Object
     public function update(Article $article)
     {
     }
+
+    /**
+     * @param Article $article
+     */
+    public function delete(Article $article)
+    {
+        $this->em->remove($article);
+    }
 }

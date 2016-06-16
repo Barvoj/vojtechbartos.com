@@ -21,6 +21,9 @@ class ArticleListItem extends Control
     /** @var Link */
     protected $editLink;
 
+    /** @var Link */
+    protected $deleteLink;
+
     /**
      * @param Article $article
      */
@@ -36,6 +39,7 @@ class ArticleListItem extends Control
         $this->getTemplate()->showLink = $this->showLink ? $this->showLink->setParameter('id', $this->article->getId()) : null;
         $this->getTemplate()->publishLink = $this->publishLink ? $this->publishLink->setParameter('id', $this->article->getId()) : null;
         $this->getTemplate()->editLink = $this->editLink ? $this->editLink->setParameter('id', $this->article->getId()) : null;
+        $this->getTemplate()->deleteLink = $this->deleteLink ? $this->deleteLink->setParameter('id', $this->article->getId()) : null;
         $this->getTemplate()->article = $this->article;
         $this->getTemplate()->render();
     }
@@ -69,6 +73,17 @@ class ArticleListItem extends Control
     public function setEditLink(Link $editLink) : ArticleListItem
     {
         $this->editLink = $editLink;
+
+        return $this;
+    }
+
+    /**
+     * @param Link $deleteLink
+     * @return ArticleListItem
+     */
+    public function setDeleteLink(Link $deleteLink) : ArticleListItem
+    {
+        $this->deleteLink = $deleteLink;
 
         return $this;
     }

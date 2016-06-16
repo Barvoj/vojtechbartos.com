@@ -61,4 +61,14 @@ class ArticleFacade
         $this->articleRepository->update($article);
         $this->em->flush();
     }
+
+    /**
+     * @param Article $article
+     * @throws \Exception
+     */
+    public function delete(Article $article)
+    {
+        $this->articleRepository->delete($article);
+        $this->em->flush();
+    }
 }

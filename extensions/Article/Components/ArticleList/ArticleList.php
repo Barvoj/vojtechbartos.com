@@ -23,6 +23,9 @@ class ArticleList extends Control
     /** @var Link */
     protected $editLink;
 
+    /** @var Link */
+    protected $deleteLink;
+
     /** @var ArticleListItemFactory */
     private $listItemFacade;
 
@@ -72,6 +75,10 @@ class ArticleList extends Control
                 $component->setEditLink($this->editLink);
             }
 
+            if ($this->deleteLink) {
+                $component->setDeleteLink($this->deleteLink);
+            }
+
             return $component;
         });
     }
@@ -105,6 +112,17 @@ class ArticleList extends Control
     public function setEditLink(Link $editLink) : ArticleList
     {
         $this->editLink = $editLink;
+
+        return $this;
+    }
+
+    /**
+     * @param Link $deleteLink
+     * @return ArticleList
+     */
+    public function setDeleteLink(Link $deleteLink) : ArticleList
+    {
+        $this->deleteLink = $deleteLink;
 
         return $this;
     }
