@@ -33,7 +33,7 @@ class Presenter extends \Nette\Application\UI\Presenter
         }
     }
 
-    private function redirectToSignIn()
+    protected function redirectToSignIn()
     {
         $this->redirect(':Auth:Sign:in', ['backlink' => $this->storeRequest()]);
     }

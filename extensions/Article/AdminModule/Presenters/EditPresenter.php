@@ -8,7 +8,6 @@ use Article\AdminModule\Presenters\Shared\TArticleFacade;
 use Article\Components\ArticleEditForm\ArticleEditForm;
 use Article\Components\ArticleEditForm\ArticleEditFormFactory;
 use Article\Model\Entities\Article;
-use Libs\Application\UI\Presenter;
 
 /**
  * @acl
@@ -25,8 +24,10 @@ class EditPresenter extends Presenter
      */
     public function actionDefault(int $id)
     {
-        // @todo check access
-        $this->article = $this->articleFacade->get($id);
+        $article = $this->articleFacade->get($id);
+        $this->checkAccessTo($article);
+
+        $this->article = $article;
     }
 
     /**

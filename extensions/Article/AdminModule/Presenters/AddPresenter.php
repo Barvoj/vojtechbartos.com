@@ -6,7 +6,6 @@ use Article\AdminModule\Presenters\Shared\Link;
 use Article\Components\ArticleAddForm\ArticleAddForm;
 use Article\Components\ArticleAddForm\ArticleAddFormFactory;
 use Article\Model\Entities\Article;
-use Libs\Application\UI\Presenter;
 
 /**
  * @acl
