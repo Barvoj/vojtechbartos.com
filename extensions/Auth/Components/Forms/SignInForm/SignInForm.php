@@ -2,8 +2,9 @@
 
 namespace Auth\Components\Forms\SignInForm;
 
+use Article\Components\ArticleEditForm\SignValues;
+use Libs\Application\UI\FormControl;
 use Libs\Application\UI\FormFactory;
-use Nette\Application\UI\Control;
 use Nette\Application\UI\Form;
 use Nette\Security\AuthenticationException;
 use Nette\Security\User;
@@ -11,8 +12,11 @@ use Nette\Security\User;
 /**
  * @method onSuccess
  */
-class SignInForm extends Control
+class SignInForm extends FormControl
 {
+    const INPUT_USERNAME = 'username';
+    const INPUT_PASSWORD = 'password';
+
     /** @var User */
     private $user;
 
@@ -46,21 +50,21 @@ class SignInForm extends Control
     {
         $form = $this->formFactory->create();
 
-        $form->addText("username", "messages.sign.username")
+        $form->addText(self::INPUT_USERNAME, "messages.sign.username")
             ->setAttribute("autocomplete", "off")
             ->setAttribute("placeholder", "messages.sign.username")
             ->setRequired()
             ->addRule(Form::MIN_LENGTH, null, 3);
 
-        $form->addPassword("password", "messages.sign.password")
+        $form->addPassword(self::INPUT_PASSWORD, "messages.sign.password")
             ->setAttribute("autocomplete", "off")
             ->setAttribute("placeholder", "messages.sign.password")
             ->setRequired();
 
-        $form->addSubmit("submit", "messages.sign.sign_in");
+        $form->addSubmit(self::INPUT_SUBMIT, "messages.sign.sign_in");
 
         $form->onSuccess[] = function(Form $form, $values) {
-            $this->formSucceeded($form, $values);
+            $this->formSucceeded($form, new SignValues($values));
         };
 
         return $form;
@@ -69,9 +73,9 @@ class SignInForm extends Control
     /**
      * Callback on form success
      * @param Form $form
-     * @param $values
+     * @param SignValues $values
      */
-    private function formSucceeded(Form $form, $values)
+    private function formSucceeded(Form $form, SignValues $values)
     {
         try {
             $this->user->login($values->username, $values->password);
