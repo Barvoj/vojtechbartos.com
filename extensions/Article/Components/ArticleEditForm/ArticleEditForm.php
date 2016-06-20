@@ -13,6 +13,9 @@ use Nette\Application\UI\Form;
  */
 class ArticleEditForm extends FormControl
 {
+    const INPUT_TITLE = 'title';
+    const INPUT_CONTENT = 'content';
+
     public $onSuccess = [];
 
     /** @var ArticleFacade */
@@ -46,22 +49,22 @@ class ArticleEditForm extends FormControl
     {
         $form = $this->createForm();
 
-        $form->addText("title", "messages.article.title")
+        $form->addText(self::INPUT_TITLE, "messages.article.title")
             ->setAttribute("autocomplete", "off")
             ->setAttribute("placeholder", "messages.article.title")
             ->setRequired()
             ->setDefaultValue($this->article->getTitle());
 
-        $form->addTextArea("content", "messages.article.content")
+        $form->addTextArea(self::INPUT_CONTENT, "messages.article.content")
             ->setAttribute("autocomplete", "off")
             ->setAttribute("placeholder", "messages.article.content")
             ->setRequired()
             ->setDefaultValue($this->article->getContent());
 
-        $form->addSubmit("submit", "messages.article.save");
+        $form->addSubmit(self::INPUT_SUBMIT, "messages.article.save");
 
         $form->onSuccess[] = function(Form $form, $values) {
-            $this->formSucceeded($form, $values);
+            $this->formSucceeded($form, new ArticleValues($values));
         };
 
         return $form;
@@ -70,13 +73,13 @@ class ArticleEditForm extends FormControl
     /**
      * Callback on form success
      * @param Form $form
-     * @param $values
+     * @param ArticleValues $values
      */
-    private function formSucceeded(Form $form, $values)
+    private function formSucceeded(Form $form, ArticleValues $values)
     {
         $article = $this->article;
-        $article->setTitle($values['title'])
-            ->setContent($values['content']);
+        $article->setTitle($values->title)
+            ->setContent($values->content);
 
         $this->articleFacade->update($article);
 

@@ -7,6 +7,8 @@ use Nette\Application\UI\Form;
 
 class FormControl extends Control
 {
+    const INPUT_SUBMIT = 'submit';
+
     /** @var FormFactory */
     private $formFactory;
 
