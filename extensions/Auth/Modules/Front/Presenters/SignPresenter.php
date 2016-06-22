@@ -1,6 +1,6 @@
 <?php
 
-namespace Auth\Presenters;
+namespace Auth\Modules\Front\Presenters;
 
 use Libs\Application\UI\Presenter;
 use Auth\Components\Forms\SignInForm\SignInFormFactory;

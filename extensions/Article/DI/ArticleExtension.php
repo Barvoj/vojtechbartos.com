@@ -21,7 +21,7 @@ class ArticleExtension extends CompilerExtension implements IEntityProvider
 
     public function beforeCompile()
     {
-        $this->addPresenterMapping(['Article' => 'Article\\*Module\\Presenters\\*Presenter']);
+        $this->addPresenterMapping(['Article' => 'Article\\Modules\\*\\Presenters\\*Presenter']);
         $this->addRouter($this->getRouter());
     }
 

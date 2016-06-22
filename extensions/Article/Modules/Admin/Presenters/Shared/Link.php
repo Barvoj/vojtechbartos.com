@@ -1,6 +1,6 @@
 <?php
 
-namespace Article\AdminModule\Presenters\Shared;
+namespace Article\Modules\Admin\Presenters\Shared;
 
 class Link
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Article\AdminModule\Presenters;
+namespace Article\Modules\Admin\Presenters;
 
 use Article\Model\Entities\Article;
 use Nette\Application\ForbiddenRequestException;

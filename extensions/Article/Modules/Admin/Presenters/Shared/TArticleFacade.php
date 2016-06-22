@@ -1,6 +1,6 @@
 <?php
 
-namespace Article\AdminModule\Presenters\Shared;
+namespace Article\Modules\Admin\Presenters\Shared;
 
 use Article\Model\Facades\ArticleFacade;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Article\FrontModule\Presenters;
+namespace Article\Modules\Front\Presenters;
 
 use Article\Components\ArticleDetail\ArticleDetail;
 use Article\Components\ArticleDetail\ArticleDetailFactory;

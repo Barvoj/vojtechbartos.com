@@ -1,9 +1,9 @@
 <?php
 
-namespace Article\AdminModule\Presenters;
+namespace Article\Modules\Admin\Presenters;
 
 
-use Article\AdminModule\Presenters\Shared\TArticleFacade;
+use Article\Modules\Admin\Presenters\Shared\TArticleFacade;
 use Article\Components\ArticleDetail\ArticleDetail;
 use Article\Components\ArticleDetail\ArticleDetailFactory;
 use Article\Model\Entities\Article;

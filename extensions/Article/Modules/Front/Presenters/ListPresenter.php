@@ -1,6 +1,6 @@
 <?php
 
-namespace Article\FrontModule\Presenters;
+namespace Article\Modules\Front\Presenters;
 
 use Article\Components\ArticleList\ArticleListFactory;
 use Article\Model\Entities\Article;

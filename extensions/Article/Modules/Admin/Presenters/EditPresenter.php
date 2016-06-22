@@ -1,10 +1,10 @@
 <?php
 
-namespace Article\AdminModule\Presenters;
+namespace Article\Modules\Admin\Presenters;
 
 
-use Article\AdminModule\Presenters\Shared\Link;
-use Article\AdminModule\Presenters\Shared\TArticleFacade;
+use Article\Modules\Admin\Presenters\Shared\Link;
+use Article\Modules\Admin\Presenters\Shared\TArticleFacade;
 use Article\Components\ArticleEditForm\ArticleEditForm;
 use Article\Components\ArticleEditForm\ArticleEditFormFactory;
 use Article\Model\Entities\Article;

@@ -10,6 +10,10 @@ use Nette\Application\Routers\RouteList;
 
 class AuthExtension extends CompilerExtension implements IEntityProvider
 {
+    const M = 'module';
+    const P = 'presenter';
+    const A = 'action';
+
     public function loadConfiguration()
     {
         $this->addConfig(__DIR__ . '/config.neon');
@@ -17,7 +21,7 @@ class AuthExtension extends CompilerExtension implements IEntityProvider
 
     public function beforeCompile()
     {
-        $this->addPresenterMapping(['Auth' => 'Auth\\Presenters\\*Presenter']);
+        $this->addPresenterMapping(['Auth' => 'Auth\\Modules\\*\\Presenters\\*Presenter']);
         $this->addRouter($this->getRouter());
     }
 
@@ -27,7 +31,7 @@ class AuthExtension extends CompilerExtension implements IEntityProvider
     public function getRouter() : IRouter
     {
         $router = new RouteList('Auth');
-        $router[] = new Route('[<locale=cs cs|en>/]sign/<action>[/<id>]', 'Sign:in');
+        $router[] = new Route('[<locale=cs cs|en>/]sign/<action>[/<id>]', [static::M => 'Front', static::P => 'Sign', static::A =>'in']);
 
         return $router;
     }
