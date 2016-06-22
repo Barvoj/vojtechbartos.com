@@ -4,28 +4,33 @@ namespace Auth\Model\Repositories;
 
 use Auth\Model\Entities\User;
 use Kdyby\Doctrine\EntityDao;
+use Kdyby\Doctrine\EntityManager;
 use Kdyby\Doctrine\EntityRepository;
 use Kdyby\Persistence\Query;
 use Nette\Object;
 
 class UserRepository extends Object
 {
+    /** @var EntityManager */
+    protected $em;
+
     /** @var EntityRepository */
-    private $users;
+    protected $users;
 
     /**
-     * @param EntityDao $repository
+     * @param EntityManager $em
      */
-    public function __construct(EntityDao $repository)
+    public function __construct(EntityManager $em)
     {
-        $this->users = $repository;
+        $this->em = $em;
+        $this->users = $em->getRepository(User::class);
     }
 
     /**
      * @param int $id
      * @return User
      */
-    public function find(int $id) : User
+    public function get(int $id) : User
     {
         return $this->users->find($id);
     }

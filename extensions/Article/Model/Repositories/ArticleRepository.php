@@ -11,10 +11,10 @@ use Nette\Object;
 class ArticleRepository extends Object
 {
     /** @var EntityManager */
-    private $em;
+    protected $em;
 
     /** @var EntityRepository */
-    private $articles;
+    protected $articles;
 
     /**
      * @param EntityManager $em
