@@ -7,7 +7,7 @@ services:
     - Auth\Components\Forms\SignInForm\SignInFormFactory
 
     # Repositories
-    - Auth\Model\Repositories\UserRepository(@doctrine.dao(Auth\Model\Entities\User))
+    - Auth\Model\Repositories\UserRepository
 
     # Entities
     - Auth\Model\Entities\User
