@@ -4,7 +4,6 @@ data:
   build: ./
   volumes:
   - ".:/project"
-  - "db:/docker-entrypoint-initdb.d"
 nginx:
   image: bartos/nginx
   ports:
@@ -15,7 +14,7 @@ nginx:
   links:
     - php
 php:
-  image: local/php
+  image: bartos/php
   ports:
     - "9000:9000"
   volumes_from:
@@ -42,17 +41,10 @@ npm:
     - data
   working_dir: /project
   entrypoint: ['npm', '--no-bin-link']
-bower:
+webpack:
   image: node
-  command: install
+#  command: install
   volumes_from:
       - data
   working_dir: /project
-  entrypoint: ['node_modules/bower/bin/bower', '--allow-root']
-gulp:
-  image: node
-  command: default
-  volumes_from:
-    - data
-  working_dir: /project
-  entrypoint: ['node_modules/gulp-cli/bin/gulp.js']
+  entrypoint: ['node_modules/webpack/bin/webpack.js']
