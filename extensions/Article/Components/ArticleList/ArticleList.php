@@ -5,7 +5,7 @@ namespace Article\Components\ArticleList;
 
 use Article\Components\ArticleListItem\ArticleListItemFactory;
 use Article\Model\Entities\Article;
-use Nette\Application\UI\Control;
+use Libs\Application\UI\Control;
 use Nette\Application\UI\Link;
 use Nette\Application\UI\Multiplier;
 
