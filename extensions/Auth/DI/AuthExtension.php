@@ -10,10 +10,6 @@ use Nette\Application\Routers\RouteList;
 
 class AuthExtension extends CompilerExtension implements IEntityProvider
 {
-    const M = 'module';
-    const P = 'presenter';
-    const A = 'action';
-
     public function loadConfiguration()
     {
         $this->addConfig(__DIR__ . '/config.neon');
@@ -36,6 +32,9 @@ class AuthExtension extends CompilerExtension implements IEntityProvider
         return $router;
     }
 
+    /**
+     * @return array
+     */
     public function getEntityMappings() : array
     {
         return [

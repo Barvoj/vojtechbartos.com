@@ -7,6 +7,10 @@ use Nette\Application\IRouter;
 
 class CompilerExtension extends \Nette\DI\CompilerExtension
 {
+    const M = 'module';
+    const P = 'presenter';
+    const A = 'action';
+    
     /**
      * @param string $file
      */
