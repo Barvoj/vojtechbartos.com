@@ -3,12 +3,16 @@
 namespace Article\Components\ArticleList;
 
 
+use Article\Components\ArticleList\Template\Main;
 use Article\Components\ArticleListItem\ArticleListItemFactory;
 use Article\Model\Entities\Article;
 use Libs\Application\UI\Control;
 use Nette\Application\UI\Link;
 use Nette\Application\UI\Multiplier;
 
+/**
+ * @method Main getTemplate()
+ */
 class ArticleList extends Control
 {
     /** @var Article[] */
@@ -50,12 +54,12 @@ class ArticleList extends Control
 
     public function render()
     {
-        $this->getTemplate()->setFile(__DIR__ . '/ArticleList.latte');
-        $this->getTemplate()->showLink = $this->showLink;
-        $this->getTemplate()->publishLink = $this->publishLink;
-        $this->getTemplate()->editLink = $this->editLink;
-        $this->getTemplate()->articles = $this->articles;
-        $this->getTemplate()->render();
+        $template = $this->getTemplate();
+        $template->showLink = $this->showLink;
+        $template->publishLink = $this->publishLink;
+        $template->editLink = $this->editLink;
+        $template->articles = $this->articles;
+        $template->render();
     }
 
     public function createComponentItem()

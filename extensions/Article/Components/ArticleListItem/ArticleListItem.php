@@ -3,10 +3,14 @@
 namespace Article\Components\ArticleListItem;
 
 
+use Article\Components\ArticleListItem\Template\Main;
 use Article\Model\Entities\Article;
 use Libs\Application\UI\Control;
 use Nette\Application\UI\Link;
 
+/**
+ * @method Main getTemplate()
+ */
 class ArticleListItem extends Control
 {
     /** @var Article */
