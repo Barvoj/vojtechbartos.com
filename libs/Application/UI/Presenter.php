@@ -14,6 +14,9 @@ class Presenter extends \Nette\Application\UI\Presenter
 {
     use AutowireComponentFactories;
 
+    const LINK_SIGN_IN = ':Auth:Front:Sign:in';
+    const PARAM_BACK_LINK = 'backlink';
+
     /** @var ITranslator */
     private $translator;
 
@@ -35,7 +38,7 @@ class Presenter extends \Nette\Application\UI\Presenter
 
     protected function redirectToSignIn()
     {
-        $this->redirect(':Auth:Front:Sign:in', ['backlink' => $this->storeRequest()]);
+        $this->redirect(static::LINK_SIGN_IN, [self::PARAM_BACK_LINK => $this->storeRequest()]);
     }
 
     /**
