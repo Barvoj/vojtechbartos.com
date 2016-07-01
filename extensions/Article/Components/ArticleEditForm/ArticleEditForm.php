@@ -36,12 +36,6 @@ class ArticleEditForm extends FormControl
         $this->article = $article;
     }
 
-    public function render()
-    {
-        $this->getTemplate()->setFile(__DIR__ . '/ArticleEditForm.latte');
-        $this->getTemplate()->render();
-    }
-
     /**
      * @return Form
      */

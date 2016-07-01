@@ -37,12 +37,6 @@ class SignInForm extends FormControl
         $this->formFactory = $formFactory;
     }
 
-    public function render()
-    {
-        $this->getTemplate()->setFile(__DIR__ . '/SignInForm.latte');
-        $this->getTemplate()->render();
-    }
-
     /**
      * @return Form
      */

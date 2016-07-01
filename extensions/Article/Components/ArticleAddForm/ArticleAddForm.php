@@ -29,12 +29,6 @@ class ArticleAddForm extends FormControl
         parent::__construct();
         $this->articleFacade = $articleFacade;
     }
-    
-    public function render()
-    {
-        $this->getTemplate()->setFile(__DIR__ . '/ArticleAddForm.latte');
-        $this->getTemplate()->render();
-    }
 
     /**
      * @return Form
