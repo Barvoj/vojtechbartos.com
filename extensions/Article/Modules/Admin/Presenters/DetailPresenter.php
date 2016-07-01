@@ -2,7 +2,6 @@
 
 namespace Article\Modules\Admin\Presenters;
 
-
 use Article\Modules\Admin\Presenters\Shared\TArticleFacade;
 use Article\Components\ArticleDetail\ArticleDetail;
 use Article\Components\ArticleDetail\ArticleDetailFactory;
