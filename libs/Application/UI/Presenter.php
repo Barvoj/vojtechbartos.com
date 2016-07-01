@@ -35,7 +35,7 @@ class Presenter extends \Nette\Application\UI\Presenter
 
     protected function redirectToSignIn()
     {
-        $this->redirect(':Auth:Sign:in', ['backlink' => $this->storeRequest()]);
+        $this->redirect(':Auth:Front:Sign:in', ['backlink' => $this->storeRequest()]);
     }
 
     /**
@@ -52,12 +52,12 @@ class Presenter extends \Nette\Application\UI\Presenter
     }
 
     /**
-     * @return string|void
+     * @return string|null
      */
     public function findLayoutTemplateFile()
     {
         if ($this->layout === FALSE) {
-            return;
+            return null;
         }
         return __DIR__ . '/../../../app/presenters/templates/@layout.latte';
     }
