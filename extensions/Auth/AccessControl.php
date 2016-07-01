@@ -62,7 +62,7 @@ class AccessControl
     /**
      * @return User
      */
-    protected function getUser()
+    protected function getUser() : User
     {
         return $this->user;
     }

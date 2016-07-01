@@ -27,7 +27,7 @@ class Presenter extends \Libs\Application\UI\Presenter
      * @param Article $article
      * @return bool
      */
-    protected function isAllowedAccessTo(Article $article)
+    protected function isAllowedAccessTo(Article $article) : bool
     {
         $user = $this->getUser();
         if (!$user->isLoggedIn()) {

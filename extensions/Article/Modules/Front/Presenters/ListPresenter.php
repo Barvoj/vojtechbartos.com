@@ -2,6 +2,7 @@
 
 namespace Article\Modules\Front\Presenters;
 
+use Article\Components\ArticleList\ArticleList;
 use Article\Components\ArticleList\ArticleListFactory;
 use Article\Model\Entities\Article;
 use Article\Model\Facades\ArticleFacade;
@@ -20,7 +21,11 @@ class ListPresenter extends Presenter
         $this->articles = $this->articleFacade->findAll();
     }
 
-    public function createComponentList(ArticleListFactory $factory)
+    /**
+     * @param ArticleListFactory $factory
+     * @return ArticleList
+     */
+    public function createComponentList(ArticleListFactory $factory) : ArticleList
     {
         $component = $factory->create($this->articles);
 

@@ -68,7 +68,7 @@ class Article extends Object
     /**
      * @return int
      */
-    public function getUserId()
+    public function getUserId() : int
     {
         return $this->userId;
     }

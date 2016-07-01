@@ -9,14 +9,15 @@
 namespace Auth;
 
 
+use Nette\Security\IAuthenticator;
 use Nette\Security\Permission;
 
 class AuthorizatorFactory
 {
     /**
-     * @return Permission
+     * @return IAuthenticator
      */
-    public static function create()
+    public static function create() : IAuthenticator
     {
         $acl = new Permission();
 

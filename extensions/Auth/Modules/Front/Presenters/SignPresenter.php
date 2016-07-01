@@ -2,6 +2,7 @@
 
 namespace Auth\Modules\Front\Presenters;
 
+use Auth\Components\Forms\SignInForm\SignInForm;
 use Libs\Application\UI\Presenter;
 use Auth\Components\Forms\SignInForm\SignInFormFactory;
 use Nette\Application\UI\Form;
@@ -37,7 +38,7 @@ class SignPresenter extends Presenter
      * @param SignInFormFactory $signInFormFactory
      * @return Form
      */
-    protected function createComponentSignForm(SignInFormFactory $signInFormFactory)
+    protected function createComponentSignForm(SignInFormFactory $signInFormFactory) : SignInForm
     {
         $form = $signInFormFactory->create();
         $form->onSuccess[] = function () {
