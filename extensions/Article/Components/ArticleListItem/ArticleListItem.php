@@ -35,13 +35,15 @@ class ArticleListItem extends Control
 
     public function render()
     {
-        $this->getTemplate()->setFile(__DIR__ . '/ArticleListItem.latte');
-        $this->getTemplate()->showLink = $this->showLink ? $this->showLink->setParameter('id', $this->article->getId()) : null;
-        $this->getTemplate()->publishLink = $this->publishLink ? $this->publishLink->setParameter('id', $this->article->getId()) : null;
-        $this->getTemplate()->editLink = $this->editLink ? $this->editLink->setParameter('id', $this->article->getId()) : null;
-        $this->getTemplate()->deleteLink = $this->deleteLink ? $this->deleteLink->setParameter('id', $this->article->getId()) : null;
-        $this->getTemplate()->article = $this->article;
-        $this->getTemplate()->render();
+        $template = $this->getTemplate();
+
+        $template->showLink = $this->showLink ? $this->showLink->setParameter('id', $this->article->getId()) : null;
+        $template->publishLink = $this->publishLink ? $this->publishLink->setParameter('id', $this->article->getId()) : null;
+        $template->editLink = $this->editLink ? $this->editLink->setParameter('id', $this->article->getId()) : null;
+        $template->deleteLink = $this->deleteLink ? $this->deleteLink->setParameter('id', $this->article->getId()) : null;
+        $template->article = $this->article;
+
+        parent::render();
     }
 
     /**

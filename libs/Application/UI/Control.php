@@ -3,11 +3,27 @@
 namespace Libs\Application\UI;
 
 
-class Control extends \Nette\Application\UI\Control
+use Nette\Application\UI\Control as BaseControl;
+use Nette\Application\UI\ITemplate;
+use ReflectionClass;
+
+class Control extends BaseControl
 {
+    /**
+     * @return ITemplate
+     */
+    public function createTemplate() : ITemplate
+    {
+        $template = parent::createTemplate();
+        $classFile = (new ReflectionClass($this))->getFileName();
+        $templateFile = preg_replace('/\.[^.]+$/', '.latte', $classFile);
+        $template->setFile($templateFile);
+
+        return $template;
+    }
+
     public function render()
     {
-        $this->getTemplate()->setFile(__DIR__ . '/' . static::class . '.latte');
         $this->getTemplate()->render();
     }
 }

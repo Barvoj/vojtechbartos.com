@@ -29,11 +29,9 @@ class ArticleDetail extends Control
 
     public function render()
     {
-        $this->getTemplate()->setFile(__DIR__ . '/ArticleDetail.latte');
-
         $this->template->title = $this->article->getTitle();
         $this->template->content = $this->preprocesor->process($this->article->getContent());
 
-        $this->getTemplate()->render();
+        parent::render();
     }
 }
