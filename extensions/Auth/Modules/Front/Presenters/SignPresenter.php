@@ -8,21 +8,8 @@ use Nette\Application\UI\Form;
 
 class SignPresenter extends Presenter
 {
-    /** @var SignInFormFactory */
-    private $signInFormFactory;
-
     /** @persistent */
     public $backlink;
-
-    /**
-     * SignPresenter constructor.
-     * @param SignInFormFactory $signFormFactory
-     */
-    public function __construct(SignInFormFactory $signFormFactory)
-    {
-        parent::__construct();
-        $this->signInFormFactory = $signFormFactory;
-    }
 
     /**
      * Sign in action
@@ -47,11 +34,12 @@ class SignPresenter extends Presenter
 
     /**
      * SignForm factory method.
+     * @param SignInFormFactory $signInFormFactory
      * @return Form
      */
-    protected function createComponentSignForm()
+    protected function createComponentSignForm(SignInFormFactory $signInFormFactory)
     {
-        $form = $this->signInFormFactory->create();
+        $form = $signInFormFactory->create();
         $form->onSuccess[] = function () {
             $this->flashMessage($this->translate('messages.sign.you_have_been_signed_in'));
             $this->restoreRequest($this->backlink);
