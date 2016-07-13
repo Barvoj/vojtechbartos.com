@@ -1,12 +1,12 @@
 <?php
 
-namespace Article\Components\ArticleListItem;
+namespace Article\Components\ArticleList\Row;
 
 use Article\Model\Entities\Article;
 use Libs\Application\UI\Control;
 use Nette\Application\UI\Link;
 
-class ArticleListItem extends Control
+class Row extends Control
 {
     /** @var Article */
     protected $article;
@@ -47,9 +47,9 @@ class ArticleListItem extends Control
 
     /**
      * @param Link $showLink
-     * @return ArticleListItem
+     * @return Row
      */
-    public function setShowLink(Link $showLink) : ArticleListItem
+    public function setShowLink(Link $showLink) : Row
     {
         $this->showLink = $showLink;
 
@@ -58,9 +58,9 @@ class ArticleListItem extends Control
 
     /**
      * @param Link $publishLink
-     * @return ArticleListItem
+     * @return Row
      */
-    public function setPublishLink(Link $publishLink) : ArticleListItem
+    public function setPublishLink(Link $publishLink) : Row
     {
         $this->publishLink = $publishLink;
 
@@ -69,9 +69,9 @@ class ArticleListItem extends Control
 
     /**
      * @param Link $editLink
-     * @return ArticleListItem
+     * @return Row
      */
-    public function setEditLink(Link $editLink) : ArticleListItem
+    public function setEditLink(Link $editLink) : Row
     {
         $this->editLink = $editLink;
 
@@ -80,9 +80,9 @@ class ArticleListItem extends Control
 
     /**
      * @param Link $deleteLink
-     * @return ArticleListItem
+     * @return Row
      */
-    public function setDeleteLink(Link $deleteLink) : ArticleListItem
+    public function setDeleteLink(Link $deleteLink) : Row
     {
         $this->deleteLink = $deleteLink;
 

@@ -2,7 +2,7 @@
 
 namespace Article\Components\ArticleList;
 
-use Article\Components\ArticleListItem\ArticleListItemFactory;
+use Article\Components\ArticleList\Row\RowFactory;
 use Article\Model\Entities\Article;
 use Libs\Application\UI\Control;
 use Nette\Application\UI\Link;
@@ -25,18 +25,18 @@ class ArticleList extends Control
     /** @var Link */
     protected $deleteLink;
 
-    /** @var ArticleListItemFactory */
-    private $listItemFacade;
+    /** @var RowFactory */
+    private $rowFacade;
 
     /**
      * @param array $articles
-     * @param ArticleListItemFactory $listItemFacade
+     * @param RowFactory $rowFacade
      */
-    public function __construct(array $articles, ArticleListItemFactory $listItemFacade)
+    public function __construct(array $articles, RowFactory $rowFacade)
     {
         parent::__construct();
         $this->articles = $articles;
-        $this->listItemFacade = $listItemFacade;
+        $this->rowFacade = $rowFacade;
     }
 
     /**
@@ -60,7 +60,7 @@ class ArticleList extends Control
     public function createComponentItem()
     {
         return new Multiplier(function ($key) {
-            $component = $this->listItemFacade->create($this->articles[$key]);
+            $component = $this->rowFacade->create($this->articles[$key]);
 
             if ($this->showLink) {
                 $component->setShowLink($this->showLink);
