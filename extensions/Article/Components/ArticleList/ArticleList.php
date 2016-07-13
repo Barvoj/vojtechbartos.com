@@ -2,17 +2,12 @@
 
 namespace Article\Components\ArticleList;
 
-
-use Article\Components\ArticleList\Template\Main;
 use Article\Components\ArticleListItem\ArticleListItemFactory;
 use Article\Model\Entities\Article;
 use Libs\Application\UI\Control;
 use Nette\Application\UI\Link;
 use Nette\Application\UI\Multiplier;
 
-/**
- * @method Main getTemplate()
- */
 class ArticleList extends Control
 {
     /** @var Article[] */

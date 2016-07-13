@@ -9,44 +9,18 @@ use ReflectionClass;
 
 class Control extends BaseControl
 {
-    const TEMPLATE_DIR = 'Template';
-    const TEMPLATE_NAME = 'main';
-    const TEMPLATE_CLASS = 'Main';
-
     /**
      * @return ITemplate
      */
     public function createTemplate() : ITemplate
     {
-        $reflection = new ReflectionClass($this);
-
         $template = parent::createTemplate();
-        $template->setFile($this->findTemplateFile($reflection));
-
-        $templateClass = $reflection->getNamespaceName() . '\\' . self::TEMPLATE_DIR . '\\' . static::TEMPLATE_CLASS;
-
-        return class_exists($templateClass) ? new $templateClass($template) : $template;
-    }
-
-    /**
-     * @param ReflectionClass $reflection
-     * @return string
-     */
-    protected function findTemplateFile(ReflectionClass $reflection)
-    {
-        $classFile = $reflection->getFileName();
-        $directory = dirname($classFile);
-        $templateFile = $directory . DIRECTORY_SEPARATOR . static::TEMPLATE_DIR . DIRECTORY_SEPARATOR . static::TEMPLATE_NAME . '.latte';
-
-        if (file_exists($templateFile)) {
-            return $templateFile;
-        }
-
+        $classFile = (new ReflectionClass($this))->getFileName();
         $templateFile = preg_replace('/\.[^.]+$/', '.latte', $classFile);
+        $template->setFile($templateFile);
 
-        return $templateFile;
+        return $template;
     }
-
 
     public function render()
     {
