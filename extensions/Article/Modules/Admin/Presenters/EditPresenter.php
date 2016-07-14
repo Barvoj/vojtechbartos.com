@@ -2,10 +2,10 @@
 
 namespace Article\Modules\Admin\Presenters;
 
+use Article\Components\ArticleForm\Factories\ArticleEditFormFactory;
+use Article\Components\ArticleForm\Forms\ArticleEditForm;
 use Article\Modules\Admin\Presenters\Shared\Link;
 use Article\Modules\Admin\Presenters\Shared\TArticleFacade;
-use Article\Components\ArticleEditForm\ArticleEditForm;
-use Article\Components\ArticleEditForm\ArticleEditFormFactory;
 use Article\Model\Entities\Article;
 
 /**

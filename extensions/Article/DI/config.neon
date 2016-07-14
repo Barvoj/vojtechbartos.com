@@ -10,8 +10,8 @@ services:
     - Article\Model\Entities\Article
 
     # Components
-    - Article\Components\ArticleAddForm\ArticleAddFormFactory
-    - Article\Components\ArticleEditForm\ArticleEditFormFactory
+    - Article\Components\ArticleForm\Factories\ArticleAddFormFactory
+    - Article\Components\ArticleForm\Factories\ArticleEditFormFactory
     - Article\Components\ArticleList\ArticleListFactory
     - Article\Components\ArticleList\Row\RowFactory
     - Article\Components\ArticleDetail\ArticleDetailFactory

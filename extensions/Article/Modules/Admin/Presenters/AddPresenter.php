@@ -2,9 +2,9 @@
 
 namespace Article\Modules\Admin\Presenters;
 
+use Article\Components\ArticleForm\Factories\ArticleAddFormFactory;
+use Article\Components\ArticleForm\Forms\ArticleAddForm;
 use Article\Modules\Admin\Presenters\Shared\Link;
-use Article\Components\ArticleAddForm\ArticleAddForm;
-use Article\Components\ArticleAddForm\ArticleAddFormFactory;
 use Article\Model\Entities\Article;
 
 /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace Article\Components\ArticleEditForm;
+namespace Article\Components\ArticleForm;
 
 use Libs\Forms\FormValues;
 

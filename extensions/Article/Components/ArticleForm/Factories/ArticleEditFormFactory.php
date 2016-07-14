@@ -1,14 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Barvoj
- * Date: 28.05.2016
- * Time: 8:37
- */
 
-namespace Article\Components\ArticleEditForm;
+namespace Article\Components\ArticleForm\Factories;
 
-
+use Article\Components\ArticleForm\Forms\ArticleEditForm;
 use Article\Model\Entities\Article;
 
 interface ArticleEditFormFactory

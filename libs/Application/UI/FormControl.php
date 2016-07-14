@@ -11,12 +11,27 @@ class FormControl extends Control
     /** @var FormFactory */
     private $formFactory;
 
+    /** @var Form */
+    private $form;
+
     /**
      * @param FormFactory $formFactory
      */
     public function injectFormFactory(FormFactory $formFactory)
     {
         $this->formFactory = $formFactory;
+    }
+
+    /**
+     * @return Form
+     */
+    protected function getInstance() : Form
+    {
+        if (!$this->form) {
+            $this->form = $this->createForm();
+        }
+
+        return $this->form;
     }
 
     /**

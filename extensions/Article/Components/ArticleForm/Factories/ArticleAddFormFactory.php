@@ -1,7 +1,8 @@
 <?php
 
-namespace Article\Components\ArticleAddForm;
+namespace Article\Components\ArticleForm\Factories;
 
+use Article\Components\ArticleForm\Forms\ArticleAddForm;
 
 interface ArticleAddFormFactory
 {
