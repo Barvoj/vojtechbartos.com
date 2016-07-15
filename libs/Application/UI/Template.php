@@ -2,7 +2,6 @@
 
 namespace Libs\Application\UI;
 
-
 use Nette\Application\UI\ITemplate;
 
 class Template implements ITemplate

@@ -2,7 +2,6 @@
 
 namespace Libs\Text;
 
-
 use Texy\Texy;
 
 class TexyPreprocesor implements Preprocesor

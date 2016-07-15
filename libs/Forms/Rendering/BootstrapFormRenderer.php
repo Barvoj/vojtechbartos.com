@@ -2,7 +2,6 @@
 
 namespace Libs\Forms\Rendering;
 
-
 use Nette\Forms\Controls\Button;
 use Nette\Forms\Controls\Checkbox;
 use Nette\Forms\Controls\CheckboxList;

@@ -2,7 +2,6 @@
 
 namespace Libs\Application\UI;
 
-
 use Nette\Application\UI\Control as BaseControl;
 use Nette\Application\UI\ITemplate;
 use ReflectionClass;

@@ -2,7 +2,6 @@
 
 namespace Libs\Latte;
 
-
 use Latte\Compiler;
 use Latte\Macros\MacroSet;
 
