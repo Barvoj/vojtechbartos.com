@@ -2,7 +2,6 @@
 
 namespace Article\Components\ArticleList;
 
-
 use Article\Model\Entities\Article;
 
 interface ArticleListFactory

@@ -3,13 +3,13 @@
 namespace Article\Components\ArticleDetail;
 
 
-use Article\Model\Entities\Article as EntityArticle;
+use Article\Model\Entities\Article;
 use Libs\Application\UI\Control;
 use Libs\Text\Preprocesor;
 
 class ArticleDetail extends Control
 {
-    /** @var EntityArticle */
+    /** @var Article */
     protected $article;
 
     /** @var Preprocesor */
@@ -17,10 +17,10 @@ class ArticleDetail extends Control
 
     /**
      * ArticleList constructor.
-     * @param EntityArticle $article
+     * @param Article $article
      * @param Preprocesor $preprocesor
      */
-    public function __construct(EntityArticle $article, Preprocesor $preprocesor)
+    public function __construct(Article $article, Preprocesor $preprocesor)
     {
         parent::__construct();
         $this->article = $article;

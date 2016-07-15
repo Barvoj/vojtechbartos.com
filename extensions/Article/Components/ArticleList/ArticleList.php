@@ -10,6 +10,9 @@ use Nette\Application\UI\Multiplier;
 
 class ArticleList extends Control
 {
+    /** @var RowFactory */
+    private $rowFacade;
+
     /** @var Article[] */
     protected $articles;
 
@@ -24,9 +27,6 @@ class ArticleList extends Control
 
     /** @var Link */
     protected $deleteLink;
-
-    /** @var RowFactory */
-    private $rowFacade;
 
     /**
      * @param array $articles
@@ -57,7 +57,7 @@ class ArticleList extends Control
         $template->render();
     }
 
-    public function createComponentItem()
+    public function createComponentItem() : Multiplier
     {
         return new Multiplier(function ($key) {
             $component = $this->rowFacade->create($this->articles[$key]);

@@ -2,14 +2,13 @@
 
 namespace Article\Components\ArticleDetail;
 
-
-use Article\Model\Entities\Article as EntityArticle;
+use Article\Model\Entities\Article;
 
 interface ArticleDetailFactory
 {
     /**
-     * @param EntityArticle $article
+     * @param Article $article
      * @return ArticleDetail
      */
-    public function create(EntityArticle $article);
+    public function create(Article $article);
 }
