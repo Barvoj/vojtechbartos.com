@@ -59,13 +59,13 @@ decorator:
             - setRenderer(@renderer)
     Libs\Application\UI\FormControl:
         setup:
-            - injectFormFactory(@Libs\Application\UI\FormFactory)
+            - injectFormFactory(@Libs\Forms\FormFactory)
 
 services:
     router.factory: VojtechBartos\Router\RouterFactory
     router: @router.factory::create
     renderer: Libs\Forms\Rendering\BootstrapFormRenderer::create
-    - Libs\Application\UI\FormFactory
+    - Libs\Forms\FormFactory
 
 extensions:
     - Auth\DI\AuthExtension

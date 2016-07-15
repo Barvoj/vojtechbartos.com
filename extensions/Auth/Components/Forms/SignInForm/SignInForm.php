@@ -4,7 +4,7 @@ namespace Auth\Components\Forms\SignInForm;
 
 use Article\Components\ArticleEditForm\SignValues;
 use Libs\Application\UI\FormControl;
-use Libs\Application\UI\FormFactory;
+use Libs\Forms\FormFactory;
 use Nette\Application\UI\Form;
 use Nette\Security\AuthenticationException;
 use Nette\Security\User;

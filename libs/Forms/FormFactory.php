@@ -1,5 +1,5 @@
 <?php
-namespace Libs\Application\UI;
+namespace Libs\Forms;
 
 use Nette\Application\UI\Form;
 

@@ -2,6 +2,7 @@
 
 namespace Libs\Application\UI;
 
+use Libs\Forms\FormFactory;
 use Nette\Application\UI\Form;
 
 class FormControl extends Control
