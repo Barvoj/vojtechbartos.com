@@ -6,7 +6,7 @@ use Article\Components\ArticleDetail\ArticleDetail;
 use Article\Components\ArticleDetail\ArticleDetailFactory;
 use Article\Model\Entities\Article as EntityArticle;
 use Article\Model\Facades\ArticleFacade;
-use Libs\Application\UI\Presenter;
+use VojtechBartos\Presenters\Presenter;
 
 class DetailPresenter extends Presenter
 {

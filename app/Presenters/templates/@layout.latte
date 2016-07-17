@@ -1,7 +1,13 @@
 {layout '@html.latte'}
 
-<div n:block="layout" class="container">
-    <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+{block layout}
+    {control menu}
 
-    {include content}
-</div>
+    <div id="react-app"></div>
+
+    <div class="container">
+        <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+
+        {include content}
+    </div>
+{/block}

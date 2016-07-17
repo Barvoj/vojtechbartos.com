@@ -3,9 +3,8 @@
 namespace Auth\Modules\Front\Presenters;
 
 use Auth\Components\Forms\SignInForm\SignInForm;
-use Libs\Application\UI\Presenter;
 use Auth\Components\Forms\SignInForm\SignInFormFactory;
-use Nette\Application\UI\Form;
+use VojtechBartos\Presenters\Presenter;
 
 class SignPresenter extends Presenter
 {
@@ -36,7 +35,7 @@ class SignPresenter extends Presenter
     /**
      * SignForm factory method.
      * @param SignInFormFactory $signInFormFactory
-     * @return Form
+     * @return SignInForm
      */
     protected function createComponentSignForm(SignInFormFactory $signInFormFactory) : SignInForm
     {

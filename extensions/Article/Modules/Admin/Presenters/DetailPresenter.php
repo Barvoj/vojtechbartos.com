@@ -6,6 +6,7 @@ use Article\Modules\Admin\Presenters\Shared\TArticleFacade;
 use Article\Components\ArticleDetail\ArticleDetail;
 use Article\Components\ArticleDetail\ArticleDetailFactory;
 use Article\Model\Entities\Article;
+use VojtechBartos\Presenters\Presenter;
 
 /**
  * @acl

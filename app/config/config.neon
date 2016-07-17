@@ -66,6 +66,7 @@ services:
     router: @router.factory::create
     renderer: Libs\Forms\Rendering\BootstrapFormRenderer::create
     - Libs\Forms\FormFactory
+    - VojtechBartos\Components\Menu\MenuFactory
 
 extensions:
     - Auth\DI\AuthExtension

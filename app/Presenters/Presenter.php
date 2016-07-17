@@ -1,12 +1,16 @@
 <?php
 
-namespace Article\Modules\Admin\Presenters;
+namespace VojtechBartos\Presenters;
 
+use Libs\Application\UI\Presenter as BasePresenter;
+use VojtechBartos\Components\Menu\TMenu;
 use Article\Model\Entities\Article;
 use Nette\Application\ForbiddenRequestException;
 
-class Presenter extends \Libs\Application\UI\Presenter
+
+class Presenter extends BasePresenter
 {
+    use TMenu;
 
     /**
      * @param Article $article

@@ -6,7 +6,7 @@ use Article\Components\ArticleList\ArticleList;
 use Article\Components\ArticleList\ArticleListFactory;
 use Article\Model\Entities\Article;
 use Article\Model\Facades\ArticleFacade;
-use Libs\Application\UI\Presenter;
+use VojtechBartos\Presenters\Presenter;
 
 class ListPresenter extends Presenter
 {

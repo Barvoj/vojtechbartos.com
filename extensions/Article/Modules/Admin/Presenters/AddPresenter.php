@@ -6,6 +6,7 @@ use Article\Components\ArticleForm\Factories\ArticleAddFormFactory;
 use Article\Components\ArticleForm\Forms\ArticleAddForm;
 use Article\Modules\Admin\Presenters\Shared\Link;
 use Article\Model\Entities\Article;
+use VojtechBartos\Presenters\Presenter;
 
 /**
  * @acl

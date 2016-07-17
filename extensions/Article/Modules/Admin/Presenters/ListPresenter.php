@@ -7,6 +7,7 @@ use Article\Modules\Admin\Presenters\Shared\TArticleFacade;
 use Article\Components\ArticleList\ArticleList;
 use Article\Components\ArticleList\ArticleListFactory;
 use Article\Model\Entities\Article;
+use VojtechBartos\Presenters\Presenter;
 
 /**
  * @acl
