@@ -4,9 +4,10 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "jquery": "^2.2.4",
     "bootstrap": "^3.3.6",
     "extract-text-webpack-plugin": "^1.0.1",
+    "jquery": "^2.2.4",
+    "nprogress": "^0.2.0",
     "react": "^15.1.0",
     "react-dom": "^15.1.0"
   },

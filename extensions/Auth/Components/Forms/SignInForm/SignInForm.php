@@ -43,6 +43,7 @@ class SignInForm extends FormControl
     public function createComponentForm() : Form
     {
         $form = $this->formFactory->create();
+        $form->getElementPrototype()->addClass('ajax');
 
         $form->addText(self::INPUT_USERNAME, "messages.sign.username")
             ->setAttribute("autocomplete", "off")

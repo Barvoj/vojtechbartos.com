@@ -2,15 +2,38 @@
 
 namespace VojtechBartos\Presenters;
 
-use Libs\Application\UI\Presenter as BasePresenter;
-use VojtechBartos\Components\Menu\TMenu;
 use Article\Model\Entities\Article;
+use Libs\Application\UI\Presenter as BasePresenter;
 use Nette\Application\ForbiddenRequestException;
+use VojtechBartos\Components\Menu\TMenu;
 
 
 class Presenter extends BasePresenter
 {
     use TMenu;
+
+    /**
+     * Sign out action
+     */
+    public function handleOut()
+    {
+        $this->getUser()->logout();
+        $this->flashMessage($this->translate('messages.sign.you_have_been_signed_out'));
+
+        if ($this->isAjax()) {
+            $this['menu']->redrawControl();
+        } else {
+            $this->redirect(':Home:default');
+        }
+    }
+
+    public function afterRender()
+    {
+        if ($this->isAjax()) {
+            $this->redrawControl('flashes');
+            $this->redrawControl('content');
+        }
+    }
 
     /**
      * @param Article $article

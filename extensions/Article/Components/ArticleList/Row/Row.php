@@ -51,7 +51,7 @@ class Row extends Control
      */
     public function setShowLink(Link $showLink) : Row
     {
-        $this->showLink = $showLink;
+        $this->showLink = clone $showLink;
 
         return $this;
     }
@@ -62,7 +62,7 @@ class Row extends Control
      */
     public function setPublishLink(Link $publishLink) : Row
     {
-        $this->publishLink = $publishLink;
+        $this->publishLink = clone $publishLink;
 
         return $this;
     }
@@ -73,7 +73,7 @@ class Row extends Control
      */
     public function setEditLink(Link $editLink) : Row
     {
-        $this->editLink = $editLink;
+        $this->editLink = clone $editLink;
 
         return $this;
     }
@@ -84,7 +84,7 @@ class Row extends Control
      */
     public function setDeleteLink(Link $deleteLink) : Row
     {
-        $this->deleteLink = $deleteLink;
+        $this->deleteLink = clone $deleteLink;
 
         return $this;
     }

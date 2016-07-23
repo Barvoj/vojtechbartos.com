@@ -54,6 +54,7 @@ module.exports = {
     plugins: [
         new ExtractTextPlugin("../css/style.css"),
         new webpack.ProvidePlugin({
+            "window.jQuery": "jquery",
             $: "jquery",
             jQuery: "jquery"
         })

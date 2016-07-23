@@ -27,7 +27,7 @@ class BootstrapFormRenderer extends Object implements IFormRenderer
         $this->renderer = $renderer;
 
         $this->renderer->wrappers['controls']['container'] = NULL;
-        $this->renderer->wrappers['pair']['container'] = 'div class=form-group';
+        $this->renderer->wrappers['pair']['container'] = 'div class="form-group row"';
         $this->renderer->wrappers['pair']['.error'] = 'has-error';
         $this->renderer->wrappers['control']['container'] = 'div class=col-sm-9';
         $this->renderer->wrappers['label']['container'] = 'div class="col-sm-3 control-label"';

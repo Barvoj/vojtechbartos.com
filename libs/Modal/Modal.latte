@@ -1,0 +1,22 @@
+<div n:snippet>
+    <div n:if="$show" class="modal in" tabindex="-1"
+                      role="dialog" {if $show}aria-labelledby="modalTitle-{\Nette\Utils\Strings::webalize($_control->lookupPath())}"{/if}
+                      id="{\Nette\Utils\Strings::webalize($_control->lookupPath())}" aria-hidden="true"
+                      style="display: block;">
+        <div role="document" class="modal-dialog {if isset($modalLarge) && $modalLarge}modal-lg{/if}">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="{$linkClose}" class="close" data-dismiss="modal" aria-label="{_}Close{/_}"><span
+                                aria-hidden="true">&times;</span></a>
+                    <h4 class="modal-title"
+                        id="modalTitle-{\Nette\Utils\Strings::webalize($_control->lookupPath())}">{$title}</h4>
+                </div>
+                <div class="modal-body">
+                    {control component}
+                </div>
+            </div>
+            <div class="modal-footer" n:inner-block="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>

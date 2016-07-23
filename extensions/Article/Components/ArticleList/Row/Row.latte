@@ -1,9 +1,9 @@
 <div class="row">
     <div class="col-md-8">{$article->getTitle()}</div>
-    <div class="col-md-1"><a n:ifset="$showLink" href="{$showLink}">Zobrazit</a></div>
-    <div class="col-md-1"><a n:ifset="$publishLink"  href="{$publishLink}">Publikovat</a></div>
-    <div class="col-md-1"><a n:ifset="$editLink"  href="{$editLink}">Upravit</a><br></div>
-    <div class="col-md-1"><a n:ifset="$deleteLink"  href="{$deleteLink}">Smazat</a><br></div>
+    <div class="col-md-1"><a n:ifset="$showLink" href="{$showLink}" class="ajax">Zobrazit</a></div>
+    <div class="col-md-1"><a n:ifset="$publishLink" href="{$publishLink}" class="ajax">Publikovat</a></div>
+    <div class="col-md-1"><a n:ifset="$editLink" href="{$editLink}" class="ajax">Upravit</a><br></div>
+    <div class="col-md-1"><a n:ifset="$deleteLink" href="{$deleteLink}" class="ajax">Smazat</a><br></div>
 </div>
 
 

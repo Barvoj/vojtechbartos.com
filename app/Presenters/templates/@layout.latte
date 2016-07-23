@@ -6,8 +6,15 @@
     <div id="react-app"></div>
 
     <div class="container">
-        <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+        {snippet flashes}
+            <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+        {/snippet}
 
-        {include content}
+        {snippet content}
+            {include content}
+        {/snippet}
     </div>
+
+    {block modal}
+    {/block}
 {/block}

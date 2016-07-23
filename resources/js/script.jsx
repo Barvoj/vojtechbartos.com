@@ -1,12 +1,16 @@
-import 'bootstrap/dist/css/bootstrap.css';
-// import $ from 'jquery/dist/jquery.js';
-jQuery = require("jquery");
-import 'bootstrap/dist/js/bootstrap.js';
-import '../css/style.less';
+import "bootstrap/dist/css/bootstrap.css";
+import $ from "jquery/dist/jquery.js";
+import "bootstrap/dist/js/bootstrap.js";
+import "../css/style.less";
+import "./nette.ajax.js";
+import "./history.nette.ajax.js";
+import "./netteForms.js";
+import "./modal.js";
+import "./progress.js";
+import React from "react";
+import ReactDOM from "react-dom";
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-
+$.nette.init();
 
 class HelloMessage extends React.Component {
     render() {

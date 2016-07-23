@@ -29,7 +29,11 @@ class SignPresenter extends Presenter
     {
         $this->getUser()->logout();
         $this->flashMessage($this->translate('messages.sign.you_have_been_signed_out'));
-        $this->redirect('in');
+        if ($this->isAjax()) {
+            $this['menu']->redrawControl();
+        } else {
+            $this->redirect(':Home:default');
+        }
     }
 
     /**
