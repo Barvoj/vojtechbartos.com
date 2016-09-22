@@ -6,9 +6,12 @@ use Auth\Exceptions\NotSignInException;
 use Libs\Application\UI\Presenter;
 use LogicException;
 use Nette\Application\ForbiddenRequestException;
+use Nette\Application\UI\ComponentReflection;
+use Nette\Application\UI\MethodReflection;
 use Nette\Reflection\ClassType;
 use Nette\Reflection\Method;
 use Nette\Security\User;
+use Reflector;
 
 class AccessControl
 {
@@ -25,21 +28,21 @@ class AccessControl
 
     /**
      * @param Presenter $presenter
-     * @param ClassType|Method $element
+     * @param ComponentReflection|MethodReflection $element
      * @throws ForbiddenRequestException
      */
     public function checkRequirements(Presenter $presenter, $element)
     {
-        if (!$element instanceof ClassType && !$element instanceof Method)
+        if (!$element instanceof ComponentReflection && !$element instanceof MethodReflection)
         {
             throw new LogicException(ClassType::class . " or " . Method::class . " type expected.");
         }
 
         $acl = false;
-        if ($element instanceof ClassType) {
+        if ($element instanceof ComponentReflection) {
             /** lookup */
             do {
-                $acl = $acl ?: $element->getAnnotation('acl');
+                $acl = $acl ?: $this->getAnnotation($element, 'acl');
             } while (!$acl && $element = $element->getParentClass());
         } else {
             $acl = $element->getAnnotation('acl');
@@ -57,6 +60,17 @@ class AccessControl
                 throw new NotSignInException();
             }
         }
+    }
+
+    /**
+     * @param Reflector $elem
+     * @param string $name
+     * @return mixed|null
+     */
+    private function getAnnotation(Reflector $elem, $name)
+    {
+        $res = ComponentReflection::parseAnnotation($elem, $name);
+        return $res ? end($res) : NULL;
     }
 
     /**

@@ -39,14 +39,6 @@ class ArticleList extends Control
         $this->rowFacade = $rowFacade;
     }
 
-    /**
-     * @param int $id
-     */
-    public function handlePublish(int $id)
-    {
-        dump($id);
-    }
-
     public function render()
     {
         $template = $this->getTemplate();

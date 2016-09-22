@@ -22,7 +22,7 @@ class Menu extends Control
     public function render()
     {
         $this->template->isLoggedIn = $this->user->isLoggedIn();
-        $this->template->username = $this->user->getIdentity()->{'username'};
+        $this->template->username = ($identity = $this->user->getIdentity()) ? $identity->{'username'} : null;
         parent::render();
     }
 }

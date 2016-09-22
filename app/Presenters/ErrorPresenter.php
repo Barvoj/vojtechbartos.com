@@ -2,14 +2,14 @@
 
 namespace VojtechBartos\Presenters;
 
-use Libs\Application\UI\Presenter;
+use Libs\Application\UI\Presenter as BasePresenter;
 use Nette\Application\BadRequestException;
 use Tracy\ILogger;
 
 /**
  * Class ErrorPresenter
  */
-class ErrorPresenter extends Presenter
+class ErrorPresenter extends BasePresenter
 {
 
     /** @var ILogger */
@@ -40,7 +40,7 @@ class ErrorPresenter extends Presenter
 
         if ($this->isAjax()) {
             $this->payload->error = true;
-            $this->terminate();
+            $this->sendPayload();
         }
     }
 }

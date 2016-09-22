@@ -2,11 +2,11 @@
 
 namespace Article\Modules\Admin\Presenters;
 
-use Article\Modules\Admin\Presenters\Shared\Link;
-use Article\Modules\Admin\Presenters\Shared\TArticleFacade;
 use Article\Components\ArticleList\ArticleList;
 use Article\Components\ArticleList\ArticleListFactory;
 use Article\Model\Entities\Article;
+use Article\Modules\Admin\Presenters\Shared\Link;
+use Article\Modules\Admin\Presenters\Shared\TArticleFacade;
 use VojtechBartos\Presenters\Presenter;
 
 /**
@@ -32,13 +32,29 @@ class ListPresenter extends Presenter
     /**
      * @param int $id
      */
+    public function handlePublish(int $id)
+    {
+        $article = $this->articleFacade->get($id);
+        $this->checkAccessTo($article);
+        $this->articleFacade->publish($article);
+
+        if (!$this->isAjax()) {
+            $this->redirect(Link::LIST);
+        }
+    }
+
+    /**
+     * @param int $id
+     */
     public function handleDelete(int $id)
     {
         $article = $this->articleFacade->get($id);
         $this->checkAccessTo($article);
         $this->articleFacade->delete($article);
 
-        $this->redirect(Link::LIST);
+        if (!$this->isAjax()) {
+            $this->redirect(Link::LIST);
+        }
     }
 
     /**
@@ -50,7 +66,7 @@ class ListPresenter extends Presenter
         $component = $articleListFactory->create($this->articles);
 
         $component->setShowLink($this->lazyLink(Link::DETAIL));
-        $component->setPublishLink($component->lazyLink('publish!'));
+        $component->setPublishLink($this->lazyLink('publish!'));
         $component->setEditLink($this->lazyLink(Link::EDIT));
         $component->setDeleteLink($this->lazyLink('delete!'));
 

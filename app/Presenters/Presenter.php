@@ -7,7 +7,6 @@ use Libs\Application\UI\Presenter as BasePresenter;
 use Nette\Application\ForbiddenRequestException;
 use VojtechBartos\Components\Menu\TMenu;
 
-
 class Presenter extends BasePresenter
 {
     use TMenu;
@@ -20,16 +19,13 @@ class Presenter extends BasePresenter
         $this->getUser()->logout();
         $this->flashMessage($this->translate('messages.sign.you_have_been_signed_out'));
 
-        if ($this->isAjax()) {
-            $this['menu']->redrawControl();
-        } else {
-            $this->redirect(':Home:default');
-        }
+        $this->forward(':Home:default');
     }
 
     public function afterRender()
     {
-        if ($this->isAjax()) {
+        if ($this->isAjax() && !$this->isControlInvalid()) {
+            $this->redrawControl('menu');
             $this->redrawControl('flashes');
             $this->redrawControl('content');
         }

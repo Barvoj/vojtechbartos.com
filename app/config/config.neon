@@ -52,6 +52,20 @@ migrations:
     driver: mysql       # pgsql or mysql
     dbal: doctrine      # nextras, nette, doctrine or dibi
 
+redis:
+    host: redis
+    journal: on
+    storage: on
+    session: on
+
+rabbitmq:
+    connection:
+        host: rabbit
+        port: 5672
+        user: admin
+        password: admin
+        vhost: /
+
 decorator:
     Nette\Application\UI\Form:
         setup:
@@ -79,3 +93,6 @@ extensions:
     translation: Kdyby\Translation\DI\TranslationExtension
     migrations: Nextras\Migrations\Bridges\NetteDI\MigrationsExtension
     autowired: Kdyby\Autowired\DI\AutowiredExtension
+    redis: Kdyby\Redis\DI\RedisExtension
+    rabbitmq: Kdyby\RabbitMq\DI\RabbitMqExtension
+    history: VojtechDobes\NetteAjax\HistoryExtension

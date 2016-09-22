@@ -114,7 +114,15 @@ class Modal extends Control
      */
     protected function createComponentComponent()
     {
-        return call_user_func($this->factory, $this);
+        $component = call_user_func($this->factory, $this);
+
+        if (isset($component->onSuccess)) {
+            $component->onSuccess[] = function () {
+                $this->hide();
+            };
+        }
+
+        return $component;
     }
 
     /**

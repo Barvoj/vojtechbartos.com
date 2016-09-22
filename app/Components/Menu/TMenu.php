@@ -4,23 +4,13 @@ namespace VojtechBartos\Components\Menu;
 
 trait TMenu
 {
-    /** @var MenuFactory */
-    public $menuFactory;
-
     /**
      * @param MenuFactory $menuFactory
-     */
-    public function injectMenuFactory(MenuFactory $menuFactory)
-    {
-        $this->menuFactory = $menuFactory;
-    }
-
-    /**
      * @return Menu
      */
-    public function createComponentMenu() : Menu
+    public function createComponentMenu(MenuFactory $menuFactory) : Menu
     {
-        $component = $this->menuFactory->create();
+        $component = $menuFactory->create();
 
         return $component;
     }

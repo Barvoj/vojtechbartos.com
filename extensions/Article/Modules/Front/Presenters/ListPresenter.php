@@ -6,10 +6,13 @@ use Article\Components\ArticleList\ArticleList;
 use Article\Components\ArticleList\ArticleListFactory;
 use Article\Model\Entities\Article;
 use Article\Model\Facades\ArticleFacade;
+use Auth\Components\Forms\SignInForm\TSignInForm;
 use VojtechBartos\Presenters\Presenter;
 
 class ListPresenter extends Presenter
 {
+    use TSignInForm;
+
     /** @var ArticleFacade */
     protected $articleFacade;
 

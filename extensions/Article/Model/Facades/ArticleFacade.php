@@ -44,7 +44,6 @@ class ArticleFacade
 
     /**
      * @param Article $article
-     * @throws \Exception
      */
     public function insert(Article $article)
     {
@@ -54,7 +53,6 @@ class ArticleFacade
 
     /**
      * @param Article $article
-     * @throws \Exception
      */
     public function update(Article $article)
     {
@@ -64,11 +62,19 @@ class ArticleFacade
 
     /**
      * @param Article $article
-     * @throws \Exception
      */
     public function delete(Article $article)
     {
         $this->articleRepository->delete($article);
+        $this->em->flush();
+    }
+
+    /**
+     * @param Article $article
+     */
+    public function publish(Article $article)
+    {
+        $article->publish();
         $this->em->flush();
     }
 }
