@@ -46,6 +46,7 @@ abstract class ArticleForm extends FormControl
     protected function createComponentForm() : Form
     {
         $form = $this->getInstance();
+        $form->getElementPrototype()->addClass('ajax');
 
         $form->addSubmit(self::INPUT_SUBMIT, "messages.article.save");
 

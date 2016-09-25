@@ -38,9 +38,7 @@ class ListPresenter extends Presenter
         $this->checkAccessTo($article);
         $this->articleFacade->publish($article);
 
-        if (!$this->isAjax()) {
-            $this->redirect(Link::LIST);
-        }
+        $this->redirect(Link::LIST);
     }
 
     /**
@@ -52,9 +50,7 @@ class ListPresenter extends Presenter
         $this->checkAccessTo($article);
         $this->articleFacade->delete($article);
 
-        if (!$this->isAjax()) {
-            $this->redirect(Link::LIST);
-        }
+        $this->redirect(Link::LIST);
     }
 
     /**
