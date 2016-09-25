@@ -27,10 +27,15 @@ trait TSignInForm
                 $this->flashMessage($this->translate('messages.sign.you_have_been_signed_in'));
 //                $this->restoreRequest($this->backlink);
 
-                $this->redirect('this');
+                $this->redirectAfterSignIn();
             };
 
             return $form;
         }))->setLinkClose($this->lazyLink('this'));
+    }
+
+    protected function redirectAfterSignIn()
+    {
+        $this->redirect('this');
     }
 }

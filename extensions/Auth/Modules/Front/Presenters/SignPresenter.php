@@ -22,20 +22,6 @@ class SignPresenter extends Presenter
         }
     }
 
-//    /**
-//     * Sign out action
-//     */
-//    public function actionOut()
-//    {
-//        $this->getUser()->logout();
-//        $this->flashMessage($this->translate('messages.sign.you_have_been_signed_out'));
-//        if ($this->isAjax()) {
-//            $this['menu']->redrawControl();
-//        } else {
-//            $this->redirect(':Home:default');
-//        }
-//    }
-
     /**
      * SignForm factory method.
      * @param SignInFormFactory $signInFormFactory

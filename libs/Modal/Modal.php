@@ -86,7 +86,6 @@ class Modal extends Control
             return;
         }
         $this->show = $this->isSignalReceiver();
-        $this->redrawControl();
     }
 
     public function handleShow()

@@ -19,7 +19,7 @@ class Presenter extends BasePresenter
         $this->getUser()->logout();
         $this->flashMessage($this->translate('messages.sign.you_have_been_signed_out'));
 
-        $this->forward(':Home:default');
+        $this->redirect(':Home:default');
     }
 
     public function afterRender()
@@ -28,6 +28,7 @@ class Presenter extends BasePresenter
             $this->redrawControl('menu');
             $this->redrawControl('flashes');
             $this->redrawControl('content');
+            $this->redrawControl('modal');
         }
     }
 
