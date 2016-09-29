@@ -77,4 +77,13 @@ class ArticleFacade
         $article->publish();
         $this->em->flush();
     }
+
+    /**
+     * @param Article $article
+     */
+    public function unPublish(Article $article)
+    {
+        $article->unpublish();
+        $this->em->flush();
+    }
 }

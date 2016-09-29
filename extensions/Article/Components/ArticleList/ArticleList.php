@@ -23,6 +23,9 @@ class ArticleList extends Control
     protected $publishLink;
 
     /** @var Link */
+    protected $unPublishLink;
+
+    /** @var Link */
     protected $editLink;
 
     /** @var Link */
@@ -42,9 +45,6 @@ class ArticleList extends Control
     public function render()
     {
         $template = $this->getTemplate();
-        $template->showLink = $this->showLink;
-        $template->publishLink = $this->publishLink;
-        $template->editLink = $this->editLink;
         $template->articles = $this->articles;
         $template->render();
     }
@@ -60,6 +60,10 @@ class ArticleList extends Control
 
             if ($this->publishLink) {
                 $component->setPublishLink($this->publishLink);
+            }
+
+            if ($this->unPublishLink) {
+                $component->setUnPublishLink($this->unPublishLink);
             }
 
             if ($this->editLink) {
@@ -92,6 +96,17 @@ class ArticleList extends Control
     public function setPublishLink(Link $publishLink) : ArticleList
     {
         $this->publishLink = $publishLink;
+
+        return $this;
+    }
+
+    /**
+     * @param Link $unPublishLink
+     * @return ArticleList
+     */
+    public function setUnPublishLink(Link $unPublishLink) : ArticleList
+    {
+        $this->unPublishLink = $unPublishLink;
 
         return $this;
     }

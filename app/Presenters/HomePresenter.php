@@ -2,9 +2,9 @@
 
 namespace VojtechBartos\Presenters;
 
-use Auth\Components\Forms\SignInForm\TSignInForm;
+use Auth\Components\Forms\SignInForm\TSignInModal;
 
 class HomePresenter extends Presenter
 {
-    use TSignInForm;
+    use TSignInModal;
 }

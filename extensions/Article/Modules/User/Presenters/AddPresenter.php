@@ -1,11 +1,11 @@
 <?php
 
-namespace Article\Modules\Admin\Presenters;
+namespace Article\Modules\User\Presenters;
 
 use Article\Components\ArticleForm\Factories\ArticleAddFormFactory;
 use Article\Components\ArticleForm\Forms\ArticleAddForm;
-use Article\Modules\Admin\Presenters\Shared\Link;
 use Article\Model\Entities\Article;
+use Article\Modules\User\Presenters\Shared\Link;
 use VojtechBartos\Presenters\Presenter;
 
 /**
@@ -22,7 +22,7 @@ class AddPresenter extends Presenter
         $component = $articleAddFormFactory->create();
 
         $component->onSuccess[] = function (Article $article) {
-            $this->flashMessage("Article {$article->getTitle()} created.");
+            $this->flashMessage($this->translate("admin.article.added", null, ['name' => $article->getTitle()]));
             $this->redirect(Link::LIST);
         };
 

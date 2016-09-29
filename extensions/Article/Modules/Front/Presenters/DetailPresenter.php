@@ -4,19 +4,17 @@ namespace Article\Modules\Front\Presenters;
 
 use Article\Components\ArticleDetail\ArticleDetail;
 use Article\Components\ArticleDetail\ArticleDetailFactory;
-use Article\Model\Entities\Article as EntityArticle;
-use Article\Model\Facades\ArticleFacade;
-use Auth\Components\Forms\SignInForm\TSignInForm;
+use Article\Model\Entities\Article;
+use Article\Model\Facades\TArticleFacade;
+use Auth\Components\Forms\SignInForm\TSignInModal;
 use VojtechBartos\Presenters\Presenter;
 
 class DetailPresenter extends Presenter
 {
-    use TSignInForm;
+    use TSignInModal;
+    use TArticleFacade;
 
-    /** @var ArticleFacade */
-    protected $articleFacade;
-
-    /** @var EntityArticle */
+    /** @var Article */
     protected $article;
 
     /**
@@ -36,13 +34,5 @@ class DetailPresenter extends Presenter
         $component = $articleFactory->create($this->article);
 
         return $component;
-    }
-
-    /**
-     * @param ArticleFacade $articleFacade
-     */
-    public function injectArticleFacade(ArticleFacade $articleFacade)
-    {
-        $this->articleFacade = $articleFacade;
     }
 }

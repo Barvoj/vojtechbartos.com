@@ -1,3 +1,6 @@
+{if count($articles) === 0}
+    {_"admin.article.list_is_empty"}
+{/if}
 {foreach $articles as $key => $article}
     {control item-$key}
 {/foreach}

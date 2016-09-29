@@ -1,4 +1,5 @@
 import "bootstrap/dist/css/bootstrap.css";
+import "font-awesome/css/font-awesome.css";
 import $ from "jquery/dist/jquery.js";
 import "bootstrap/dist/js/bootstrap.js";
 import "../css/style.less";

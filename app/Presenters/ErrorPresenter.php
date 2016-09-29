@@ -3,6 +3,7 @@
 namespace VojtechBartos\Presenters;
 
 use Libs\Application\UI\Presenter as BasePresenter;
+use Libs\Db\EntityNotFoundException;
 use Nette\Application\BadRequestException;
 use Tracy\ILogger;
 
@@ -30,7 +31,9 @@ class ErrorPresenter extends BasePresenter
      */
     public function renderDefault($exception)
     {
-        if ($exception instanceof BadRequestException) {
+        if ($exception instanceof EntityNotFoundException) {
+            $this->setView(404);
+        } elseif ($exception instanceof BadRequestException) {
             $code = $exception->getCode();
             $this->setView(in_array($code, [403, 404, 405, 410, 500]) ? $code : '4xx');
         } else {

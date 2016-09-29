@@ -123,11 +123,29 @@ class Article extends Object
     }
 
     /**
+     * @return bool
+     */
+    public function isPublished()
+    {
+        return $this->published !== null;
+    }
+
+    /**
      * @return Article
      */
     public function publish() : Article
     {
         $this->published = DateTime::from("now");
+
+        return $this;
+    }
+
+    /**
+     * @return Article
+     */
+    public function unPublish() : Article
+    {
+        $this->published = null;
 
         return $this;
     }

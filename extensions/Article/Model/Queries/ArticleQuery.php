@@ -21,7 +21,19 @@ class ArticleQuery extends QueryObject
     public function published() : ArticleQuery
     {
         $this->filter[] = function (QueryBuilder $qb) {
-            $qb->andWhere('a.published != null');
+            $qb->andWhere('a.published IS NOT null');
+        };
+        return $this;
+    }
+
+    /**
+     * @param int $userId
+     * @return ArticleQuery
+     */
+    public function byUserId(int $userId) : ArticleQuery
+    {
+        $this->filter[] = function (QueryBuilder $qb) use ($userId) {
+            $qb->andWhere('a.userId = :userId')->setParameter('userId', $userId);
         };
         return $this;
     }

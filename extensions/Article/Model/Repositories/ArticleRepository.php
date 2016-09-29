@@ -28,10 +28,17 @@ class ArticleRepository extends Object
     /**
      * @param int $id
      * @return Article
+     * @throws ArticleNotFoundException
      */
     public function get(int $id) : Article
     {
-        return $this->articles->find($id);
+        $article = $this->articles->find($id);
+
+        if ($article === null) {
+            throw new ArticleNotFoundException();
+        }
+
+        return $article;
     }
 
     /**
@@ -45,10 +52,26 @@ class ArticleRepository extends Object
     /**
      * @param Query $query
      * @return Article
+     * @throws ArticleNotFoundException
      */
     public function fetchOne(Query $query) : Article
     {
-        return $this->articles->fetchOne($query);
+        $article = $this->articles->fetchOne($query);
+
+        if ($article === null) {
+            throw new ArticleNotFoundException();
+        }
+
+        return $article;
+    }
+
+    /**
+     * @param Query $query
+     * @return Article[]
+     */
+    public function fetchAll(Query $query) : array
+    {
+        return $this->articles->fetch($query)->toArray();
     }
 
     /**

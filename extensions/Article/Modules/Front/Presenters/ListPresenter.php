@@ -5,23 +5,23 @@ namespace Article\Modules\Front\Presenters;
 use Article\Components\ArticleList\ArticleList;
 use Article\Components\ArticleList\ArticleListFactory;
 use Article\Model\Entities\Article;
-use Article\Model\Facades\ArticleFacade;
-use Auth\Components\Forms\SignInForm\TSignInForm;
+use Article\Model\Queries\ArticleQuery;
+use Article\Model\Repositories\TArticleRepository;
+use Auth\Components\Forms\SignInForm\TSignInModal;
 use VojtechBartos\Presenters\Presenter;
 
 class ListPresenter extends Presenter
 {
-    use TSignInForm;
-
-    /** @var ArticleFacade */
-    protected $articleFacade;
+    use TSignInModal;
+    use TArticleRepository;
 
     /** @var Article[] */
     protected $articles = [];
 
     public function actionDefault()
     {
-        $this->articles = $this->articleFacade->findAll();
+        $query = (new ArticleQuery())->published();
+        $this->articles = $this->articleRepository->fetchAll($query);
     }
 
     /**
@@ -35,13 +35,5 @@ class ListPresenter extends Presenter
         $component->setShowLink($this->lazyLink(':Article:Front:Detail:default'));
 
         return $component;
-    }
-
-    /**
-     * @param ArticleFacade $articleFacade
-     */
-    public function injectArticleFacade(ArticleFacade $articleFacade)
-    {
-        $this->articleFacade = $articleFacade;
     }
 }

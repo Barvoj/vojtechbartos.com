@@ -18,6 +18,9 @@ class Row extends Control
     protected $publishLink;
 
     /** @var Link */
+    protected $unPublishLink;
+
+    /** @var Link */
     protected $editLink;
 
     /** @var Link */
@@ -35,9 +38,11 @@ class Row extends Control
     public function render()
     {
         $template = $this->getTemplate();
+        $template->isPublished = $this->article->isPublished();
 
         $template->showLink = $this->showLink ? $this->showLink->setParameter('id', $this->article->getId()) : null;
         $template->publishLink = $this->publishLink ? $this->publishLink->setParameter('id', $this->article->getId()) : null;
+        $template->unPublishLink = $this->unPublishLink ? $this->unPublishLink->setParameter('id', $this->article->getId()) : null;
         $template->editLink = $this->editLink ? $this->editLink->setParameter('id', $this->article->getId()) : null;
         $template->deleteLink = $this->deleteLink ? $this->deleteLink->setParameter('id', $this->article->getId()) : null;
         $template->article = $this->article;
@@ -63,6 +68,17 @@ class Row extends Control
     public function setPublishLink(Link $publishLink) : Row
     {
         $this->publishLink = clone $publishLink;
+
+        return $this;
+    }
+
+    /**
+     * @param Link $unPublishLink
+     * @return Row
+     */
+    public function setUnPublishLink(Link $unPublishLink) : Row
+    {
+        $this->unPublishLink = clone $unPublishLink;
 
         return $this;
     }

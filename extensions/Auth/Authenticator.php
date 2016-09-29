@@ -3,6 +3,7 @@
 namespace Auth;
 
 use Auth\Model\Queries\UserQuery;
+use Auth\Model\Repositories\UserNotFoundException;
 use Auth\Model\Repositories\UserRepository;
 use Nette\Object;
 use Nette\Security\AuthenticationException;
@@ -35,11 +36,14 @@ class Authenticator extends Object implements IAuthenticator
         list($username, $password) = $credentials;
 
         $query = (new UserQuery())->byUsername($username);
-        $user = $this->userRepository->fetchOne($query);
 
-        if (!isset($user)) {
+        try {
+            $user = $this->userRepository->fetchOne($query);
+        } catch (UserNotFoundException $ex) {
             throw new AuthenticationException('The username is incorrect.', self::IDENTITY_NOT_FOUND);
-        } elseif (!Passwords::verify($password, $user->getPassword())) {
+        }
+
+        if (!Passwords::verify($password, $user->getPassword())) {
             throw new AuthenticationException('The password is incorrect.', self::INVALID_CREDENTIAL);
         } elseif (Passwords::needsRehash($user->getPassword())) {
             $user->setPassword(Passwords::hash($password));

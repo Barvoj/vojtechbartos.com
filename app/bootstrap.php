@@ -4,9 +4,9 @@ require __DIR__ . '/../vendor/backend/autoload.php';
 
 $configurator = new Nette\Configurator;
 
-if (isset($_COOKIE['debug']) && $_COOKIE['debug'] === "true") {
+//if (isset($_COOKIE['debug']) && $_COOKIE['debug'] === "true") {
     $configurator->setDebugMode(true); // enable for your remote IP
-}
+//}
 
 $configurator->enableDebugger(__DIR__ . '/../log');
 $configurator->setTempDirectory(__DIR__ . '/../temp');

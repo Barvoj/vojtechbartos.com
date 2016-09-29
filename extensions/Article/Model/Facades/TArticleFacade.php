@@ -1,8 +1,6 @@
 <?php
 
-namespace Article\Modules\Admin\Presenters\Shared;
-
-use Article\Model\Facades\ArticleFacade;
+namespace Article\Model\Facades;
 
 trait TArticleFacade
 {

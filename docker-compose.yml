@@ -49,17 +49,17 @@ services:
       - "15672:15672"
   redis:
     image: redis
-#  npm:
-#    image: node
-#    command: install
-#    volumes_from:
-#      - data
-#    working_dir: /project
-#    entrypoint: ['npm', '--no-bin-link']
-#  webpack:
-#    image: node
-#    command: install
-#    volumes_from:
-#        - data
-#    working_dir: /project
-#    entrypoint: ['node_modules/webpack/bin/webpack.js']
+  npm:
+    image: node
+    command: install
+    volumes_from:
+      - data
+    working_dir: /project
+    entrypoint: ['npm', '--no-bin-link']
+  webpack:
+    image: node
+    command: install
+    volumes_from:
+        - data
+    working_dir: /project
+    entrypoint: ['node_modules/webpack/bin/webpack.js']

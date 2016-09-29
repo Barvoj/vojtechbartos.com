@@ -1,11 +1,11 @@
 <?php
 
-namespace Article\Modules\Admin\Presenters;
+namespace Article\Modules\User\Presenters;
 
-use Article\Modules\Admin\Presenters\Shared\TArticleFacade;
 use Article\Components\ArticleDetail\ArticleDetail;
 use Article\Components\ArticleDetail\ArticleDetailFactory;
 use Article\Model\Entities\Article;
+use Article\Model\Facades\TArticleFacade;
 use VojtechBartos\Presenters\Presenter;
 
 /**

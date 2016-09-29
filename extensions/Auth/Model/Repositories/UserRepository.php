@@ -3,7 +3,6 @@
 namespace Auth\Model\Repositories;
 
 use Auth\Model\Entities\User;
-use Kdyby\Doctrine\EntityDao;
 use Kdyby\Doctrine\EntityManager;
 use Kdyby\Doctrine\EntityRepository;
 use Kdyby\Persistence\Query;
@@ -29,18 +28,32 @@ class UserRepository extends Object
     /**
      * @param int $id
      * @return User
+     * @throws UserNotFoundException
      */
     public function get(int $id) : User
     {
-        return $this->users->find($id);
+        $user = $this->users->find($id);
+
+        if ($user === null) {
+            throw new UserNotFoundException();
+        }
+
+        return $user;
     }
 
     /**
      * @param Query $query
      * @return User
+     * @throws UserNotFoundException
      */
     public function fetchOne(Query $query) : User
     {
-        return $this->users->fetchOne($query);
+        $user = $this->users->fetchOne($query);
+
+        if ($user === null) {
+            throw new UserNotFoundException();
+        }
+
+        return $user;
     }
 }

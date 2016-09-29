@@ -28,7 +28,7 @@ class ArticleExtension extends CompilerExtension implements IEntityProvider
     {
         $router = new RouteList('Article');
         $router[] = new Route('[<locale=cs cs|en>/]article/<presenter>[/<id>]', [static::M => 'Front', static::P => 'List', static::A =>'default']);
-        $router[] = new Route('[<locale=cs cs|en>/]admin/article/<presenter>[/<id>]', [static::M => 'Admin', static::P => 'List', static::A =>'default']);
+        $router[] = new Route('[<locale=cs cs|en>/]user/article/<presenter>[/<id>]', [static::M => 'User', static::P => 'List', static::A => 'default']);
 
         return $router;
     }

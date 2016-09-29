@@ -1,12 +1,12 @@
 <?php
 
-namespace Article\Modules\Admin\Presenters;
+namespace Article\Modules\User\Presenters;
 
 use Article\Components\ArticleForm\Factories\ArticleEditFormFactory;
 use Article\Components\ArticleForm\Forms\ArticleEditForm;
-use Article\Modules\Admin\Presenters\Shared\Link;
-use Article\Modules\Admin\Presenters\Shared\TArticleFacade;
 use Article\Model\Entities\Article;
+use Article\Model\Facades\TArticleFacade;
+use Article\Modules\User\Presenters\Shared\Link;
 use VojtechBartos\Presenters\Presenter;
 
 /**
@@ -39,7 +39,7 @@ class EditPresenter extends Presenter
         $component = $articleEditFormFactory->create($this->article);
 
         $component->onSuccess[] = function (Article $article) {
-            $this->flashMessage("Article {$article->getTitle()} updated.");
+            $this->flashMessage($this->translate("admin.article.updated", null, ['name' => $article->getTitle()]));
             $this->redirect(Link::LIST);
         };
 

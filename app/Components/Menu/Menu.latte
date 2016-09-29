@@ -15,15 +15,15 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="{if $isLoggedIn}{plink :Article:Admin:List:default}{else}{plink :Article:Front:List:default}{/if}"
-                       class="ajax">{_"articles"}</a></li>
+                    <a href="{plink :Article:Front:List:default}" class="ajax">{_"articles"}</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li n:if="$isLoggedIn" class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{$username} <span class="caret"></span></a>
                     <ul class="dropdown-menu">
+                        <li><a href="{plink :Article:User:List:default}" class="ajax">{_"My articles"}</a></li>
+                        <li role="separator" class="divider"></li>
                         <li><a href="{plink out!}" class="ajax">{_"sign_out"}</a></li>
-                        {*<li role="separator" class="divider"></li>*}
                     </ul>
                 </li>
                 {*<li n:if="!$isLoggedIn"><a href="{plink :Auth:Front:Sign:in}" class="ajax">sign_in</a></li>*}
