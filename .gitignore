@@ -8,5 +8,6 @@ vendor
 www/fonts
 www/js
 www/css
+www/dist
 
 composer.lock

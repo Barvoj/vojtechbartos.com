@@ -10,7 +10,7 @@
     <meta name="keywords" content="">
     <title>{ifset title}{include title|striptags} | {/ifset}Vojtěch Bartoš</title>
     <link rel="shortcut icon" href="{$basePath}/favicon.ico">
-    <link rel="stylesheet" href="{$basePath}/css/style.css">
+    <link rel="stylesheet" href="{$basePath}/dist/style.css">
 
     {block styles}{/block}
 
@@ -25,7 +25,7 @@
 <body>
     <div n:block="layout"></div>
 
-    <script type="text/javascript" src="{$basePath}/js/script.js"></script>
+    <script type="text/javascript" src="{$basePath}/dist/script.js"></script>
 
     {block scripts}{/block}
 </body>

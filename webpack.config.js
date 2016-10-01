@@ -1,10 +1,15 @@
+var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
+var extractLESS = new ExtractTextPlugin('style.css');
+
 module.exports = {
-    entry: "./resources/js/script.jsx",
+    cache: true,
+    entry: path.join(__dirname, 'resources/js/script.jsx'),
     output: {
-        path: "www/js",
+        path: path.join(__dirname, 'www/dist'),
+        publicPath: '/dist/',
         filename: "script.js"
     },
     module: {
@@ -18,12 +23,8 @@ module.exports = {
                 }
             },
             {
-                test: /\.css$/,
-                loader: ExtractTextPlugin.extract("style-loader", "css-loader")
-            },
-            {
-                test: /\.less$/,
-                loader: ExtractTextPlugin.extract("style-loader", "css-loader", "less-loader")
+                test: /\.(css|less)$/,
+                loader: extractLESS.extract("style-loader", "css-loader!less-loader")
             },
             {
                 test: /\.png$/,
@@ -35,26 +36,25 @@ module.exports = {
             },
             {
                 test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
-                loader: "url?prefix=font/&limit=5000&name=../css/[hash].[ext]"
+                loader: "url?prefix=font/&limit=5000&name=[hash].[ext]"
             },
             {
                 test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-                loader: "url?limit=10000&mimetype=application/octet-stream&name=../css/[hash].[ext]"
+                loader: "url?limit=10000&mimetype=application/octet-stream&name=[hash].[ext]"
             },
             {
                 test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'file?name=../css/[hash].[ext]'
+                loader: 'file?name=[hash].[ext]'
             },
             {
                 test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-                loader: "url?limit=10000&mimetype=image/svg+xml&name=../css/[hash].[ext]"
+                loader: "url?limit=10000&mimetype=image/svg+xml&name=[hash].[ext]"
             }
         ]
     },
     plugins: [
-        new ExtractTextPlugin("../css/style.css"),
+        extractLESS,
         new webpack.ProvidePlugin({
-            'window.Nette': 'nette-forms',
             "window.jQuery": "jquery",
             jQuery: "jquery",
             $: "jquery"
