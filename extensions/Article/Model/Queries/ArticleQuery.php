@@ -39,6 +39,30 @@ class ArticleQuery extends QueryObject
     }
 
     /**
+     * @param string $order
+     * @return ArticleQuery
+     */
+    public function orderByPublished($order = "ASC")
+    {
+        $this->filter[] = function (QueryBuilder $qb) use ($order) {
+            $qb->addOrderBy('a.published', $order);
+        };
+        return $this;
+    }
+
+    /**
+     * @param string $order
+     * @return ArticleQuery
+     */
+    public function orderById($order = "ASC")
+    {
+        $this->filter[] = function (QueryBuilder $qb) use ($order) {
+            $qb->addOrderBy('a.id', $order);
+        };
+        return $this;
+    }
+
+    /**
      * @param Queryable $repository
      * @return QueryBuilder
      */

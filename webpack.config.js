@@ -4,7 +4,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
     entry: "./resources/js/script.jsx",
     output: {
-        path: "./www/js",
+        path: "www/js",
         filename: "script.js"
     },
     module: {
@@ -54,9 +54,10 @@ module.exports = {
     plugins: [
         new ExtractTextPlugin("../css/style.css"),
         new webpack.ProvidePlugin({
+            'window.Nette': 'nette-forms',
             "window.jQuery": "jquery",
-            $: "jquery",
-            jQuery: "jquery"
+            jQuery: "jquery",
+            $: "jquery"
         })
     ]
 };

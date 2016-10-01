@@ -20,7 +20,11 @@ class ListPresenter extends Presenter
 
     public function actionDefault()
     {
-        $query = (new ArticleQuery())->published();
+        $query = (new ArticleQuery())
+            ->published()
+            ->orderByPublished("DESC")
+            ->orderById("DESC");
+
         $this->articles = $this->articleRepository->fetchAll($query);
     }
 

@@ -7,6 +7,7 @@ use Article\Components\ArticleForm\Forms\ArticleEditForm;
 use Article\Model\Entities\Article;
 use Article\Model\Facades\TArticleFacade;
 use Article\Modules\User\Presenters\Shared\Link;
+use Article\Modules\User\Presenters\Shared\TArticle;
 use VojtechBartos\Presenters\Presenter;
 
 /**
@@ -15,9 +16,7 @@ use VojtechBartos\Presenters\Presenter;
 class EditPresenter extends Presenter
 {
     use TArticleFacade;
-
-    /** @var Article */
-    protected $article;
+    use TArticle;
 
     /**
      * @param int $id
@@ -27,7 +26,7 @@ class EditPresenter extends Presenter
         $article = $this->articleFacade->get($id);
         $this->checkAccessTo($article);
 
-        $this->article = $article;
+        $this->setArticle($article);
     }
 
     /**
@@ -36,7 +35,7 @@ class EditPresenter extends Presenter
      */
     public function createComponentArticleEdit(ArticleEditFormFactory $articleEditFormFactory) : ArticleEditForm
     {
-        $component = $articleEditFormFactory->create($this->article);
+        $component = $articleEditFormFactory->create($this->getArticle());
 
         $component->onSuccess[] = function (Article $article) {
             $this->flashMessage($this->translate("admin.article.updated", null, ['name' => $article->getTitle()]));

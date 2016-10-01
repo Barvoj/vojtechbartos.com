@@ -14,3 +14,6 @@ article:
     title: Název
     content: Text
     save: Uložit
+    ok: Ok
+    cancel: Zrušit
+    publish_date: Datum publikování

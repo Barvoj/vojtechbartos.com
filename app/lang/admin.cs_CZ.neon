@@ -5,6 +5,7 @@ article:
     deleted: "Článek <b>%name%</b> byl smazán."
     updated: "Všechny změny v článku <b>%name%</b> byly uloženy."
 
+    show: Zobrazit
     edit: Editovat
     publish: Publikovat
     unPublish: Zrušit publikování
