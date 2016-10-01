@@ -4,16 +4,41 @@ sign:
     wrong_username_or_password: Chybné uživatelské jméno nebo heslo
     sing_in_to_administration: Přihlášení do administrace
     username: Uživatelské jméno
-    required: Pole je povinné
     password: Heslo
     remember: Zapamatovat
     sign_in: Přihlásit
     sign_out: Odhlásit
 
-article:
-    title: Název
-    content: Text
+form:
+    required: Pole je povinné
     save: Uložit
     ok: Ok
     cancel: Zrušit
+
+confirm:
+    are_you_sure: Jsi si jistý?
+
+menu:
+    app_name: VB
+    toogle_navigation:
+
+article:
+    articles: Články
+    my_articles: Moje články
+    show: Zobrazit
+    add: Přidat
+    added: Článek <b>%name%</b> byl vytvořen.
+    publish: Publikovat
+    published: Článek <b>%name%</b> byl publikován.
+    unPublish: Zrušit publikování
+    unpublished: Publikování článku <b>%name%</b> bylo zastaveno.
+    delete: Smazat
+    deleted: Článek <b>%name%</b> byl smazán.
+    edit: Editovat
+    updated: Všechny změny v článku <b>%name%</b> byly uloženy.
+    list_is_empty: Nebyly nalezeny žádné články.
+    title: Název
+    content: Text
     publish_date: Datum publikování
+    are_you_sure_you_want_to_publish: Opravdu chcete zveřejnit článek?
+    are_you_sure_you_want_to_delete: Opravdu chcete smazat článek?

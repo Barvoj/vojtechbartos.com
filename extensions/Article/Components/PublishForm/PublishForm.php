@@ -54,7 +54,7 @@ class PublishForm extends FormControl
         $form->getElementPrototype()->addClass('ajax');
 
         $form->addText('date', 'messages.article.publish_date');
-        $form->addSubmit(self::INPUT_SUBMIT, "messages.article.ok");
+        $form->addSubmit(self::INPUT_SUBMIT, "messages.form.ok");
 
         $form->onSuccess[] = function (Form $form, $values) {
             $this->processOk($form, $values);

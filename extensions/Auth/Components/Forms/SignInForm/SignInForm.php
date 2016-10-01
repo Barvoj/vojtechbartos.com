@@ -75,7 +75,7 @@ class SignInForm extends FormControl
         try {
             $this->user->login($values->username, $values->password);
         } catch (AuthenticationException $ex) {
-            $form->addError("admin.sign.wrong_username_or_password");
+            $form->addError("messages.sign.wrong_username_or_password");
 
             return;
         }

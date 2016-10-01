@@ -22,7 +22,7 @@ class AddPresenter extends Presenter
         $component = $articleAddFormFactory->create();
 
         $component->onSuccess[] = function (Article $article) {
-            $this->flashMessage($this->translate("admin.article.added", null, ['name' => $article->getTitle()]));
+            $this->flashMessage($this->translate("messages.article.added", null, ['name' => $article->getTitle()]));
             $this->redirect(Link::LIST);
         };
 

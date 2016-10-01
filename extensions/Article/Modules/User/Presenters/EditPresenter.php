@@ -38,7 +38,7 @@ class EditPresenter extends Presenter
         $component = $articleEditFormFactory->create($this->getArticle());
 
         $component->onSuccess[] = function (Article $article) {
-            $this->flashMessage($this->translate("admin.article.updated", null, ['name' => $article->getTitle()]));
+            $this->flashMessage($this->translate("messages.article.updated", null, ['name' => $article->getTitle()]));
             $this->redirect(Link::LIST);
         };
 

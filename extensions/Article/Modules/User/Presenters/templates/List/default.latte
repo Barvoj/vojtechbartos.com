@@ -1,9 +1,10 @@
 {block content}
-    <h1>Články</h1>
-    <a href="{$linkAdd}" class="ajax">Přidat</a>
+    <h1>{_"messages.article.articles"}</h1>
+    <a href="{$linkAdd}" class="ajax">{_"messages.article.add"}</a>
     {control articles}
 {/block}
 
 {block modal}
-    {control publishForm}
+    {control publishConfirmation}
+    {control deleteConfirmation}
 {/block}

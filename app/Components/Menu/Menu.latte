@@ -2,33 +2,35 @@
     <div class="container-fluid">
         {* Brand and toggle get grouped for better mobile display *}
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">{_"messages.menu.toogle_navigation"}</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand ajax" href="{plink :Home:default}">{_"VB"}</a>
+            <a class="navbar-brand ajax" href="{plink :Home:default}">{_"messages.menu.app_name"}</a>
         </div>
 
         {* Collect the nav links, forms, and other content for toggling *}
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="{plink :Article:Front:List:default}" class="ajax">{_"articles"}</a></li>
+                    <a href="{plink :Article:Front:List:default}" class="ajax">{_"messages.article.articles"}</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li n:if="$isLoggedIn" class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{$username} <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">{$username} <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{plink :Article:User:List:default}" class="ajax">{_"My articles"}</a></li>
+                        <li><a href="{plink :Article:User:List:default}"
+                               class="ajax">{_"messages.article.my_articles"}</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="{plink out!}" class="ajax">{_"sign_out"}</a></li>
+                        <li><a href="{plink out!}" class="ajax">{_"messages.sign.sign_out"}</a></li>
                     </ul>
                 </li>
-                {*<li n:if="!$isLoggedIn"><a href="{plink :Auth:Front:Sign:in}" class="ajax">sign_in</a></li>*}
                 <li n:if="!$isLoggedIn"><a href="{plink this do=>'signForm-show'}" class="ajax"
-                                           data-ajax-off="history">{_"sign_in"}</a>
+                                           data-ajax-off="history">{_"messages.sign.sign_in"}</a>
                 </li>
             </ul>
         </div>

@@ -3,7 +3,7 @@ services:
   data:
     build: ./
     volumes:
-    - .:/project
+      - .:/project
   nginx:
     image: bartos/nginx
     ports:
@@ -39,12 +39,12 @@ services:
     image: blackfire/blackfire
     environment:
       - BLACKFIRE_SERVER_ID=9fe25e0d-19b3-405b-832f-846f8d7cae4b
-      - BLACKFIRE_SERVER_TOKEN=b08cf68aaa559dd542004ae8261e4f1b74c952a56837f914021cbb9a5de42134
+      - BLdACKFIRE_SERVER_TOKEN=b08cf68aaa559dd542004ae8261e4f1b74c952a56837f914021cbb9a5de42134
   rabbit:
     image: rabbitmq:3-management
     environment:
-    - RABBITMQ_DEFAULT_USER=admin
-    - RABBITMQ_DEFAULT_PASS=admin
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
     ports:
       - "15672:15672"
   redis:
@@ -60,6 +60,6 @@ services:
     image: node
     command: install
     volumes_from:
-        - data
+      - data
     working_dir: /project
     entrypoint: ['node_modules/webpack/bin/webpack.js']

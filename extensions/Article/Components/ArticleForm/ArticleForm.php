@@ -48,7 +48,7 @@ abstract class ArticleForm extends FormControl
         $form = $this->getInstance();
         $form->getElementPrototype()->addClass('ajax');
 
-        $form->addSubmit(self::INPUT_SUBMIT, "messages.article.save");
+        $form->addSubmit(self::INPUT_SUBMIT, "messages.form.save");
 
         $form->onSuccess[] = function(Form $form, $values) {
             $this->formSucceeded($form, new ArticleValues($values));

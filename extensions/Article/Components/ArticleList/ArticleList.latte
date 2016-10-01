@@ -1,6 +1,6 @@
 <div class="list">
     {if count($articles) === 0}
-        {_"admin.article.list_is_empty"}
+        {_"messages.article.list_is_empty"}
     {/if}
     {foreach $articles as $key => $article}
         {control item-$key}
