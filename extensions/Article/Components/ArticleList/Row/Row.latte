@@ -20,7 +20,8 @@
         <a n:ifset="$editLink" href="{$editLink}" title="{_messages.article.edit}" class="ajax edit">
             <i class="fa fa-pencil" aria-hidden="true"></i>
         </a>
-        <a n:ifset="$deleteLink" href="{$deleteLink}" title="{_messages.article.delete}" class="ajax delete">
+        <a n:ifset="$deleteLink" href="{$deleteLink}" title="{_messages.article.delete}" class="ajax delete"
+                                 data-ajax-off="history">
             <i class="fa fa-trash-o" aria-hidden="true"></i>
         </a>
     </div>
