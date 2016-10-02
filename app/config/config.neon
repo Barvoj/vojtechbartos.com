@@ -15,7 +15,7 @@ application:
         *: VojtechBartos\Presenters\*Presenter
 
 di:
-    debugger: true
+    debugger: false
 
 routing:
     debugger: true
