@@ -52,6 +52,10 @@ redis:
     storage: on
     session: on
 
+mail:
+    smtp: true
+    timeout: 10
+
 decorator:
     Nette\Application\UI\Form:
         setup:
@@ -65,12 +69,14 @@ services:
     router.factory: VojtechBartos\Router\RouterFactory
     router: @router.factory::create
     renderer: Libs\Forms\Rendering\BootstrapFormRenderer::create
+    - Libs\Logger\TracyLogger
     - Libs\Forms\FormFactory
     - VojtechBartos\Components\Menu\MenuFactory
 
 extensions:
     - Auth\DI\AuthExtension
     - Article\DI\ArticleExtension
+    - Mailing\DI\MailingExtension
 
     console: Kdyby\Console\DI\ConsoleExtension
     events: Kdyby\Events\DI\EventsExtension

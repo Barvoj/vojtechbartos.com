@@ -1,0 +1,21 @@
+services:
+    mailConsumer: Mailing\Consumers\MailConsumer
+    - Mailing\Consumers\MailProducer
+
+rabbitmq:
+    producers:
+        mailing:
+            connection: default
+            exchange: {name: 'messaging-exchange', type: direct}
+            contentType: application/json
+            deliveryMode: 2
+    consumers:
+        mailing:
+            idleTimeout: 60
+            exchange: {name: 'messaging-exchange', type: direct}
+            queues:
+                messging-queue-high:
+                    qos: {prefetchSize: 0, prefetchCount: 1, global: false}
+                    callback: [@mailConsumer, process]
+                    routing_keys:
+                        - 'priority_high'
