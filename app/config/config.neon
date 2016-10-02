@@ -34,11 +34,6 @@ console:
     url: http://vojtechbartos.com
 
 doctrine:
-    driver: mysqli
-    host: mysql
-    user: root
-    password: root
-    dbname: vojtechbartos
     metadata:
         VojtechBartos: %appDir%
 
@@ -53,18 +48,9 @@ migrations:
     dbal: doctrine      # nextras, nette, doctrine or dibi
 
 redis:
-    host: redis
     journal: on
     storage: on
     session: on
-
-rabbitmq:
-    connection:
-        host: rabbit
-        port: 5672
-        user: admin
-        password: admin
-        vhost: /
 
 decorator:
     Nette\Application\UI\Form:
