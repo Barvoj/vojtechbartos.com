@@ -2,6 +2,8 @@
 
 namespace Auth;
 
+use Auth\Enums\Identity as IdentityData;
+use Auth\Enums\Role;
 use Auth\Model\Queries\UserQuery;
 use Auth\Model\Repositories\UserNotFoundException;
 use Auth\Model\Repositories\UserRepository;
@@ -50,11 +52,11 @@ class Authenticator extends Object implements IAuthenticator
         }
 
         $data = [
-            'username' => $user->getUsername(),
-            'firstName' => $user->getFirstName(),
-            'lastName' => $user->getLastName(),
+            IdentityData::USERNAME => $user->getUsername(),
+            IdentityData::FIRST_NAME => $user->getFirstName(),
+            IdentityData::LAST_NAME => $user->getLastName(),
         ];
 
-        return new Identity($user->getId(), $roles = ['admin'], $data);
+        return new Identity($user->getId(), $roles = [Role::ADMIN], $data);
     }
 }

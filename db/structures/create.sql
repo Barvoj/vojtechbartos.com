@@ -32,19 +32,21 @@ CREATE TABLE `vojtechbartos`.`languages` (
 --
 DROP TABLE IF EXISTS `vojtechbartos`.`users`;
 CREATE TABLE `vojtechbartos`.`users` (
-  `user_id`       INT          NOT NULL AUTO_INCREMENT
+  `user_id`     INT          NOT NULL AUTO_INCREMENT
   COMMENT 'Id uživatele',
-  `username`      VARCHAR(255) NOT NULL
+  `username`    VARCHAR(255) NOT NULL
   COMMENT 'Uživatelské jméno',
-  `email`         VARCHAR(255) NOT NULL
+  `email`       VARCHAR(255) NOT NULL
   COMMENT 'Emailová adresa',
-  `first_name`    VARCHAR(255)          DEFAULT NULL
+  `role_id`     INT          NOT NULL DEFAULT 1
+  COMMENT 'Role uživatele',
+  `first_name`  VARCHAR(255)          DEFAULT NULL
   COMMENT 'Jméno',
-  `last_name`     VARCHAR(255)          DEFAULT NULL
+  `last_name`   VARCHAR(255)          DEFAULT NULL
   COMMENT 'Příjmení',
-  `password`      VARCHAR(60)  NOT NULL
+  `password`    VARCHAR(60)  NOT NULL
   COMMENT 'Osolený hash hesla',
-  `language_id`   INT          NOT NULL DEFAULT 1
+  `language_id` INT          NOT NULL DEFAULT 1
   COMMENT 'Jazyk pro komunikaci s uživatelem',
   PRIMARY KEY (`user_id`),
   UNIQUE (`username`),
@@ -55,6 +57,21 @@ CREATE TABLE `vojtechbartos`.`users` (
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8
   COMMENT 'Tabulka všech uživatelů';
+
+--
+-- Číselník uživatelských rolí
+--
+DROP TABLE IF EXISTS `vojtechbartos`.`roles`;
+CREATE TABLE `vojtechbartos`.`roles` (
+  `role_id` INT         NOT NULL AUTO_INCREMENT
+  COMMENT 'Id role',
+  `code`    VARCHAR(20) NOT NULL,
+  PRIMARY KEY (`role_id`),
+  UNIQUE KEY (`code`)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8
+  COMMENT 'Číselník uživatelských rolí';
 
 --
 -- Tabulka článků

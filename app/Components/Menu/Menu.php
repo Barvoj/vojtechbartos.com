@@ -2,8 +2,8 @@
 
 namespace VojtechBartos\Components\Menu;
 
+use Auth\User;
 use Libs\Application\UI\Control;
-use Nette\Security\User;
 
 class Menu extends Control
 {
@@ -22,7 +22,8 @@ class Menu extends Control
     public function render()
     {
         $this->template->isLoggedIn = $this->user->isLoggedIn();
-        $this->template->username = ($identity = $this->user->getIdentity()) ? $identity->{'username'} : null;
+        $this->template->username = $this->user->getUsername();
+        $this->template->name = $this->user->getName();
         parent::render();
     }
 }

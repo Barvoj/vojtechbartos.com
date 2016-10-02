@@ -10,7 +10,6 @@ use Nette\Application\UI\ComponentReflection;
 use Nette\Application\UI\MethodReflection;
 use Nette\Reflection\ClassType;
 use Nette\Reflection\Method;
-use Nette\Security\User;
 use Reflector;
 
 class AccessControl

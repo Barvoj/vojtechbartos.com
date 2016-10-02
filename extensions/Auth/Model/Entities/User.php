@@ -26,6 +26,12 @@ class User extends Object
     protected $username;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Auth\Model\Entities\Role")
+     * @var Role
+     */
+    protected $role;
+
+    /**
      * @ORM\Column(name="password", type="string", length=60)
      * @var string
      */
@@ -48,6 +54,7 @@ class User extends Object
      * @var string
      */
     protected $lastName;
+
 
     /**
      * @return int
@@ -74,6 +81,22 @@ class User extends Object
         $this->username = $username;
 
         return $this;
+    }
+
+    /**
+     * @return Role
+     */
+    public function getRole() : Role
+    {
+        return $this->role;
+    }
+
+    /**
+     * @param Role $role
+     */
+    public function setRole(Role $role)
+    {
+        $this->role = $role;
     }
 
     /**

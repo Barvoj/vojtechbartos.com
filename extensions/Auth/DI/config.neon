@@ -1,4 +1,6 @@
 services:
+    security.user: Auth\User
+
     - Auth\AccessControl
     - Auth\Authenticator
     - Auth\AuthorizatorFactory::create

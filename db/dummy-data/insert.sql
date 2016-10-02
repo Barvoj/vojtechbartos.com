@@ -112,5 +112,7 @@ Skvělou bilanci mají Strýcová s Mirzaovou, jež dnes nejprve zvládly čtvrt
 Pokud by Strýcová s Mirzaovou ve Wu-chanu vyhrály, posunuly by se v žebříčku sezóny už na deváté místo. Do Singapuru se nicméně Indka už kvalifikovala s bývalou partnerkou Martinou Hingisovou.',
    '2016-09-01 12:00:00');
 
-INSERT INTO `vojtechbartos`.`users` (`user_id`, `username`, `email`, `first_name`, `last_name`, `password`, `language_id`) VALUES
-  (2, 'user', 'user@vojtechbartos.cz', '', '', '$2y$10$GDnStWCZlRBvTJNndKMql.Mepehu2ZrbhzVFG5j0aGfeTZ21VqD3W', 1); -- password: hcAdmin
+INSERT INTO `vojtechbartos`.`users` (`user_id`, `username`, `role_id`, `email`, `first_name`, `last_name`, `password`, `language_id`)
+VALUES
+  (2, 'user', 1, 'user@vojtechbartos.cz', 'Jan', 'Novák',
+   '$2y$10$GDnStWCZlRBvTJNndKMql.Mepehu2ZrbhzVFG5j0aGfeTZ21VqD3W', 1); -- password: hcAdmin
