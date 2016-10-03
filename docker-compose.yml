@@ -5,7 +5,7 @@ services:
     volumes:
       - .:/project
   nginx:
-    image: bartos/nginx
+    image: bartos/nginx:nette
     ports:
       - "80:80"
       - "443:443"
