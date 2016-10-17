@@ -13,7 +13,7 @@ class User extends Object
 {
     /**
      * @ORM\Id
-     * @ORM\Column( name="user_id", type="integer" )
+     * @ORM\Column(name="user_id", type="integer")
      * @ORM\GeneratedValue
      * @var int
      */
@@ -28,6 +28,7 @@ class User extends Object
     /**
      * @ORM\ManyToOne(targetEntity="Role")
      * @ORM\JoinColumn(name="role_id", referencedColumnName="role_id")
+     * @var Role
      */
     protected $role;
 

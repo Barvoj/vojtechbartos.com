@@ -13,7 +13,7 @@ class Role extends Object
 {
     /**
      * @ORM\Id
-     * @ORM\Column( name="role_id", type="integer" )
+     * @ORM\Column(name="role_id", type="integer")
      * @ORM\GeneratedValue
      * @var int
      */
