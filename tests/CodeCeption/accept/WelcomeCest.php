@@ -16,6 +16,6 @@ class WelcomeCest
     {
         $I->wantTo('List my articles');
         $signInModal->signIn('admin', 'hcAdmin');
-        $I->see('Vojtěch Barrtoš');
+        $I->see('Vojtěch Bartoš');
     }
 }

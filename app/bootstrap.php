@@ -4,9 +4,19 @@ require __DIR__ . '/../vendor/backend/autoload.php';
 
 $configurator = new Nette\Configurator;
 
-//if (isset($_COOKIE['debug']) && $_COOKIE['debug'] === "true") {
-    $configurator->setDebugMode(true); // enable for your remote IP
-//}
+const ENV_LOCAL = "local";
+const ENV_TESTING = "testing";
+const ENV_PRODUCTION = "production";
+
+if (file_exists(__DIR__ . '/config/environment.local.php')) {
+    require __DIR__ . '/config/environment.local.php';
+} else {
+    define('ENVIRONMENT', ENV_PRODUCTION);
+}
+
+$enableDebugger = in_array(ENVIRONMENT, [ENV_LOCAL, ENV_TESTING]);
+
+$configurator->setDebugMode($enableDebugger); // enable for your remote IP
 
 $configurator->enableDebugger(__DIR__ . '/../log');
 $configurator->setTempDirectory(__DIR__ . '/../temp');

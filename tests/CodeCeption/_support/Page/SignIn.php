@@ -27,9 +27,9 @@ class SignIn
         $I = $this->tester;
 
         // if snapshot exists - skipping login
-        if ($I->loadSessionSnapshot('login')) {
-            return $this;
-        }
+//        if ($I->loadSessionSnapshot('login')) {
+//            return $this;
+//        }
 
         $I->amOnPage('/');
         $I->click("Přihlásit");
@@ -41,7 +41,7 @@ class SignIn
         $I->see('Byli jste úspěšně přihlášeni.');
 
         // saving snapshot
-        $I->saveSessionSnapshot('login');
+//        $I->saveSessionSnapshot('login');
 
         return $this;
     }
