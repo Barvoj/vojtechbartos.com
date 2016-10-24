@@ -2,11 +2,14 @@
 
 namespace Auth\Model\Entities;
 
+use Doctrine\ORM\Mapping as ORM;
+use Nette\Object;
+
 /**
  * @ORM\Entity
  * @ORM\Table( name="roles" )
  */
-class Role
+class Role extends Object
 {
     /**
      * @ORM\Id

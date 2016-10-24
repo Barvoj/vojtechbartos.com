@@ -26,8 +26,8 @@ class User extends Object
     protected $username;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Auth\Model\Entities\Role")
-     * @var Role
+     * @ORM\ManyToOne(targetEntity="Role")
+     * @ORM\JoinColumn(name="role_id", referencedColumnName="role_id")
      */
     protected $role;
 

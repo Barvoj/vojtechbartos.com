@@ -16,6 +16,7 @@ class SignInForm extends FormControl
 {
     const INPUT_USERNAME = 'username';
     const INPUT_PASSWORD = 'password';
+    const INPUT_SUBMIT = 'signin';
 
     /** @var User */
     private $user;
