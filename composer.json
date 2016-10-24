@@ -45,8 +45,7 @@
     "vojtech-dobes/nette-ajax-history": "^2.0"
   },
   "require-dev": {
-    "nette/tester": "~1.7.0",
-    "mrtnzlml/testbench": "^2.2"
+    "codeception/codeception": "^2.2"
   },
   "config": {
     "vendor-dir": "vendor/backend"

@@ -1,9 +1,11 @@
 version: '2'
 services:
   data:
+#    container_name: "data"
     build: ./
     volumes:
       - .:/project
+    command: "true"
   nginx:
     image: bartos/nginx:nette
     ports:
@@ -17,12 +19,11 @@ services:
     image: bartos/php
     ports:
       - "9000:9000"
-#    network_mode: "host"
     volumes_from:
       - data
     links:
       - mysql
-      - blackfire
+#      - blackfire
   mysql:
     image: bartos/mysql
     ports:
@@ -31,16 +32,6 @@ services:
       - data
     environment:
       - MYSQL_ROOT_PASSWORD=root
-  composer:
-    image: bartos/composer
-    command: install
-    volumes_from:
-      - data
-  blackfire:
-    image: blackfire/blackfire
-    environment:
-      - BLACKFIRE_SERVER_ID=9fe25e0d-19b3-405b-832f-846f8d7cae4b
-      - BLACKFIRE_SERVER_TOKEN=b08cf68aaa559dd542004ae8261e4f1b74c952a56837f914021cbb9a5de42134
   rabbit:
     image: rabbitmq:3-management
     environment:
@@ -50,17 +41,44 @@ services:
       - "15672:15672"
   redis:
     image: redis
-  npm:
-    image: node
-    command: install
-    volumes_from:
-      - data
-    working_dir: /project
-    entrypoint: ['npm', '--no-bin-link']
-  webpack:
-    image: node
-    command: install
-    volumes_from:
-      - data
-    working_dir: /project
-    entrypoint: ['node_modules/webpack/bin/webpack.js']
+#  composer:
+#    image: bartos/composer
+#    command: install
+#    volumes_from:
+#      - data
+#  blackfire:
+#    image: blackfire/blackfire
+#    environment:
+#      - BLACKFIRE_SERVER_ID=9fe25e0d-19b3-405b-832f-846f8d7cae4b
+#      - BLACKFIRE_SERVER_TOKEN=b08cf68aaa559dd542004ae8261e4f1b74c952a56837f914021cbb9a5de42134
+#  npm:
+#    image: node
+##    command: install
+#    volumes_from:
+#      - data
+#    working_dir: /project
+#    entrypoint: ['npm', '--no-bin-link']
+#  webpack:
+#    image: node
+#    command: install
+#    volumes_from:
+#      - data
+#    working_dir: /project
+#    entrypoint: ['node_modules/webpack/bin/webpack.js']
+#  codeception:
+#    image: codeception/codeception
+#    depends_on:
+#      - firefox
+#      - nginx
+#    volumes_from:
+#      - data
+#    volumes:
+#      - ./src:/src
+#      - ./tests:/tests
+#      - ./codeception.yml:/codeception.yml
+#      - .:/project
+#  firefox:
+#    image: selenium/standalone-firefox-debug:2.53.0
+#    ports:
+#      - '4444'
+#      - '5900'

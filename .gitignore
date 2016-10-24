@@ -11,3 +11,5 @@ www/css
 www/dist
 
 composer.lock
+
+tests/CodeCeption/_output/*
