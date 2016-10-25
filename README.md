@@ -1,4 +1,7 @@
 # vojtechbartos.com
+
+[![Build Status](https://travis-ci.org/Barvoj/vojtechbartos.com.svg?branch=master)](https://travis-ci.org/Barvoj/vojtechbartos.com)
+
 Personal web page
 
 # Installation
