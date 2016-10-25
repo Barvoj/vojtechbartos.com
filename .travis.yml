@@ -1,28 +1,73 @@
+sudo: required
+
 language: php
 
-sudo: false
+services:
+  - docker
 
-php:
-  - 7.0
+install:
+  # Download all images
+  - docker-compose pull
+  - docker pull selenium/standalone-firefox-debug:2.53.0
+  - docker pull codeception/codeception
+  - docker pull ubuntu
+  - docker pull bartos/composer
+  - docker pull node
 
-before_install:
-  # Update composer
-  - travis_retry composer self-update
+before_script:
+  #  - chmod -R 777 log temp
+  - touch ./app/config.environment.local.php
 
   # Generate private key
   - openssl aes-256-cbc -K $encrypted_5b9f08960f5d_key -iv $encrypted_5b9f08960f5d_iv -in id_rsa.enc -out id_rsa -d
 
-install:
-  # Install dependecies
-  - travis_retry composer install --no-interaction --prefer-source -o
-
-script:
-  # Run Nette Tester
-  - vendor/bin/tester tests -s -p php
-
-after_success:
+  # Use as SSH key
   - chmod 600 id_rsa
   - mv id_rsa ~/.ssh/id_rsa
+
+  # Copy config.local.neon
+  - scp -P 11172 -o 'StrictHostKeyChecking no' app@alpha-node-2.rosti.cz:/srv/app_configs/config.local.test.neon ./app/config/config.local.neon
+
+  - docker version
+  - docker-compose version
+
+  # Run containers
+  - docker-compose up --build -d
+
+  # Wait for containers to start
+  - sleep 30
+
+  # Install dependecies
+  - docker run --rm --volumes-from vb_data --net vojtechbartoscom_default --name composer bartos/composer install
+  - docker run --rm --volumes-from vb_data --net vojtechbartoscom_default --name npm -w '/project' node npm install
+  - docker run --rm --volumes-from vb_data --net vojtechbartoscom_default --name webpack -w '/project' node node_modules/webpack/bin/webpack.js
+
+  # Run migrations
+  - docker exec -u www-data:www-data vb_php bash -c "php /project/www/index.php migrations:continue"
+
+  # Run firefox
+  - docker run -d -p 4444:4444 -p 5900:5900 --name firefox --link vb_nginx:nginx --net vojtechbartoscom_default selenium/standalone-firefox-debug:2.53.0
+
+  # Wait for firefox to start
+  - sleep 30
+
+script:
+  # Run Codeception
+  - docker run --rm --volumes-from vb_data --link firefox --net vojtechbartoscom_default --name codeception codeception/codeception run accept
+
+after_script:
+  # Stop and remove containers
+  - docker stop firefox
+  - docker rm firefox
+  - docker-compose down
+
+  # Upload logs
+  - mkdir ./logs
+  - docker cp vb_data:/project/log ./logs/log
+  - docker cp vb_data:/project/tests/CodeCeption/_output ./logs/_output
+  - zip -r ./log.zip ./logs
+  - scp -P 11172 -o 'StrictHostKeyChecking no' ./log.zip app@alpha-node-2.rosti.cz:/srv/builds/$TRAVIS_BUILD_NUMBER.zip
+  - rm -rf ./logs log.zip
 
 deploy:
   skip_cleanup: true

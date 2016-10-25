@@ -1,12 +1,13 @@
 version: '2'
 services:
   data:
-#    container_name: "data"
+    container_name: "vb_data"
     build: ./
-    volumes:
-      - .:/project
+#    volumes:
+#      - .:/project
     command: "true"
   nginx:
+    container_name: "vb_nginx"
     image: bartos/nginx:nette
     ports:
       - "80:80"
@@ -16,6 +17,7 @@ services:
     links:
       - php
   php:
+    container_name: "vb_php"
     image: bartos/php
     ports:
       - "9000:9000"
@@ -25,6 +27,7 @@ services:
       - mysql
 #      - blackfire
   mysql:
+    container_name: "vb_mysql"
     image: bartos/mysql
     ports:
       - "3306:3306"
@@ -33,6 +36,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
   rabbit:
+    container_name: "vb_rabbit"
     image: rabbitmq:3-management
     environment:
       - RABBITMQ_DEFAULT_USER=admin
@@ -40,6 +44,7 @@ services:
     ports:
       - "15672:15672"
   redis:
+    container_name: "vb_redis"
     image: redis
 #  composer:
 #    image: bartos/composer
@@ -65,20 +70,3 @@ services:
 #      - data
 #    working_dir: /project
 #    entrypoint: ['node_modules/webpack/bin/webpack.js']
-#  codeception:
-#    image: codeception/codeception
-#    depends_on:
-#      - firefox
-#      - nginx
-#    volumes_from:
-#      - data
-#    volumes:
-#      - ./src:/src
-#      - ./tests:/tests
-#      - ./codeception.yml:/codeception.yml
-#      - .:/project
-#  firefox:
-#    image: selenium/standalone-firefox-debug:2.53.0
-#    ports:
-#      - '4444'
-#      - '5900'

@@ -14,7 +14,7 @@ if (file_exists(__DIR__ . '/config/environment.local.php')) {
     define('ENVIRONMENT', ENV_PRODUCTION);
 }
 
-$enableDebugger = in_array(ENVIRONMENT, [ENV_LOCAL, ENV_TESTING]);
+$enableDebugger = in_array(ENVIRONMENT, [ENV_LOCAL]);
 
 $configurator->setDebugMode($enableDebugger); // enable for your remote IP
 
