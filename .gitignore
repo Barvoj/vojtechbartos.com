@@ -1,6 +1,7 @@
 .idea
 
 app/config/config.local.neon
+app/config/environment.local.php
 
 node_modules
 vendor
