@@ -1,0 +1,4 @@
+services:
+
+    # Repositories
+    - Page\Model\Repositories\PageRepository(@Kdyby\Doctrine\EntityManager::getRepository(Page\Model\Entities\Page))

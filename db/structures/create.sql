@@ -81,13 +81,13 @@ CREATE TABLE `vojtechbartos`.`articles` (
   `article_id`       INT          NOT NULL AUTO_INCREMENT
   COMMENT 'Id článku',
   `title`        VARCHAR(255)          DEFAULT NULL
-  COMMENT 'Příjmení',
+  COMMENT 'Titulek',
   `content`      TEXT  NOT NULL
-  COMMENT 'Osolený hash hesla',
+  COMMENT 'Obsah článku',
   `language_id`   INT          NOT NULL DEFAULT 1
-  COMMENT 'Jazyk pro komunikaci s uživatelem',
+  COMMENT 'Jazyk ve kterém je článek napsaný',
   `user_id`   INT          NOT NULL DEFAULT 1
-  COMMENT 'Author',
+  COMMENT 'Autor',
   `published` DATETIME DEFAULT NULL
   COMMENT 'Datum publikování',
   PRIMARY KEY (`article_id`),
@@ -99,3 +99,19 @@ CREATE TABLE `vojtechbartos`.`articles` (
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8
   COMMENT 'Tabulka všech uživatelů';
+
+DROP TABLE IF EXISTS `vojtechbartos`.`pages`;
+CREATE TABLE `vojtechbartos`.`pages` (
+  `page_id` INT  NOT NULL AUTO_INCREMENT
+  COMMENT 'Id stránky',
+  `code`    VARCHAR(100)  DEFAULT NULL
+  COMMENT 'Kód',
+  `title`   VARCHAR(255)  DEFAULT NULL
+  COMMENT 'Titulek',
+  `content` TEXT NOT NULL
+  COMMENT 'Obsah stránky',
+  PRIMARY KEY (`page_id`)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8
+  COMMENT 'Tabulka stránek';

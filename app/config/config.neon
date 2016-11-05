@@ -77,6 +77,7 @@ extensions:
     - Auth\DI\AuthExtension
     - Article\DI\ArticleExtension
     - Mailing\DI\MailingExtension
+#    - Page\DI\PageExtension
 
     console: Kdyby\Console\DI\ConsoleExtension
     events: Kdyby\Events\DI\EventsExtension
