@@ -61,7 +61,7 @@ class MailConsumer implements IConsumer
         $mail = new Message();
         $mail->addTo($user->getEmail());
         $mail->setSubject("Email test");
-        $mail->setBody("Toto je testovací email.");
+        $mail->setBody("Toto je testovací e-mail.");
 
         try {
             $this->mailer->send($mail);
