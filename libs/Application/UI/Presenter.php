@@ -62,7 +62,7 @@ class Presenter extends \Nette\Application\UI\Presenter
         if ($this->layout === FALSE) {
             return null;
         }
-        return __DIR__ . '/../../../app/presenters/templates/@layout.latte';
+        return __DIR__ . '/../../../app/Presenters/templates/@layout.latte';
     }
 
     /**
