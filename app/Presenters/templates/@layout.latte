@@ -8,9 +8,9 @@
     <div id="react-app"></div>
 
     <div class="container">
-        {snippet flashes}
+        <div n:snippet="flashes" class="flashes">
             <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message |noescape}</div>
-        {/snippet}
+        </div>
 
         {snippet content}
             {include content}

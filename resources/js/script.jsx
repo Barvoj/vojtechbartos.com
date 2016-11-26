@@ -6,6 +6,8 @@ import "./history.nette.ajax.js";
 import "./netteForms.js";
 import "./modal.js";
 import "./progress.js";
+import "./flash.js";
+import "./error.js";
 import React from "react";
 import ReactDOM from "react-dom";
 
