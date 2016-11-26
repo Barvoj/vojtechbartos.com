@@ -18,7 +18,7 @@ import "nprogress/nprogress.css";
         success: function () {
             NProgress.done();
         },
-        error: function (jqXHR, status, error) {
+        error: function () {
             NProgress.done();
         }
     });
