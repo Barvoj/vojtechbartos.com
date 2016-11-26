@@ -22,7 +22,13 @@
     <![endif]-->
 </head>
 
-<body>
+<body class="js-off">
+<script type="application/javascript">
+    let body = document.getElementsByClassName("js-off");
+    if (body && 0 in body) {
+        body[0].className = "js-on";
+    }
+</script>
     <div n:block="layout"></div>
 
     <script type="text/javascript" src="{$basePath}/dist/script.js"></script>
