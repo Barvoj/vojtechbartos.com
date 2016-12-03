@@ -5,12 +5,17 @@ language: php
 services:
   - docker
 
+env:
+  global:
+    - REPO=barvoj/fpm
+
+before_install:
+  - sudo /etc/init.d/mysql stop
+
 install:
   # Download all images
-  - docker-compose pull
   - docker pull selenium/standalone-firefox-debug:2.53.0
   - docker pull codeception/codeception
-  - docker pull ubuntu
   - docker pull bartos/composer
   - docker pull node
 
@@ -28,22 +33,21 @@ before_script:
   # Copy config.local.neon
   - scp -P 11172 -o 'StrictHostKeyChecking no' app@alpha-node-2.rosti.cz:/srv/app_configs/config.local.test.neon ./app/config/config.local.neon
 
-  - docker version
-  - docker-compose version
+  # Install dependecies
+  - docker run --rm --volume `pwd`:/project -w /project bartos/composer install
+  - docker run --rm --volume `pwd`:/project -w /project node npm install
+  - docker run --rm --volume `pwd`:/project -w /project node node_modules/webpack/bin/webpack.js
+
+  - docker build -f Dockerfile -t $REPO .
 
   # Run containers
-  - docker-compose up --build -d
+  - docker-compose up -d
 
   # Wait for containers to start
   - sleep 30
 
-  # Install dependecies
-  - docker run --rm --volumes-from vb_data --net vojtechbartoscom_default --name composer bartos/composer install
-  - docker run --rm --volumes-from vb_data --net vojtechbartoscom_default --name npm -w '/project' node npm install
-  - docker run --rm --volumes-from vb_data --net vojtechbartoscom_default --name webpack -w '/project' node node_modules/webpack/bin/webpack.js
-
   # Run migrations
-  - docker exec -u www-data:www-data vb_php bash -c "php /project/www/index.php migrations:continue"
+  - docker exec -u www-data:www-data vb_fpm bash -c "php /project/www/index.php migrations:continue"
 
   # Run firefox
   - docker run -d -p 4444:4444 -p 5900:5900 --name firefox --link vb_nginx:nginx --net vojtechbartoscom_default selenium/standalone-firefox-debug:2.53.0
@@ -53,7 +57,7 @@ before_script:
 
 script:
   # Run Codeception
-  - docker run --rm --volumes-from vb_data --link firefox --net vojtechbartoscom_default --name codeception codeception/codeception run accept
+  - docker run --rm --volume `pwd`:/project --link firefox --net vojtechbartoscom_default codeception/codeception run accept
 
 after_script:
   # Stop and remove containers
@@ -68,6 +72,13 @@ after_script:
   - zip -r ./log.zip ./logs
   - scp -P 11172 -o 'StrictHostKeyChecking no' ./log.zip app@alpha-node-2.rosti.cz:/srv/builds/$TRAVIS_BUILD_NUMBER.zip
   - rm -rf ./logs log.zip
+
+after_success:
+  - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
+  - docker tag $REPO $REPO:$TAG
+  - docker tag $REPO $REPO:travis-$TRAVIS_BUILD_NUMBER
+  - docker push $REPO
 
 deploy:
   skip_cleanup: true

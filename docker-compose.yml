@@ -1,11 +1,5 @@
 version: '2'
 services:
-  data:
-    container_name: "vb_data"
-    build: ./
-#    volumes:
-#      - .:/project
-    command: "true"
   nginx:
     container_name: "vb_nginx"
     image: bartos/nginx:nette
@@ -13,26 +7,22 @@ services:
       - "80:80"
       - "443:443"
     volumes_from:
-      - data
+      - php
     links:
       - php
   php:
-    container_name: "vb_php"
-    image: bartos/php
+    container_name: "vb_fpm"
+    image: barvoj/fpm
     ports:
       - "9000:9000"
-    volumes_from:
-      - data
     links:
       - mysql
 #      - blackfire
   mysql:
     container_name: "vb_mysql"
-    image: bartos/mysql
+    image: barvoj/mysql
     ports:
       - "3306:3306"
-    volumes_from:
-      - data
     environment:
       - MYSQL_ROOT_PASSWORD=root
   rabbit:
@@ -46,6 +36,8 @@ services:
   redis:
     container_name: "vb_redis"
     image: redis
+    ports:
+      - "6379:6379"
 #  composer:
 #    image: bartos/composer
 #    command: install
