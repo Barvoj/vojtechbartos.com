@@ -1,4 +1,5 @@
 .idea
+.kube
 
 app/config/config.local.neon
 app/config/environment.local.php
