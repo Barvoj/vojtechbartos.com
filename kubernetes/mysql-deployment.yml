@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+  labels:
+    app: vojtechbartos
+spec:
+  type: NodePort
+  ports:
+  - port: 3306
+  selector:
+    app: vojtechbartos
+    service: mysql
+    tier: backend
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: mysql
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: vojtechbartos
+        service: mysql
+        tier: backend
+    spec:
+      containers:
+      - name: vb-mysql
+        image: barvoj/mysql
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3306
+          name: mysql
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: root
