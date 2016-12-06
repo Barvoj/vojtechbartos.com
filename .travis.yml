@@ -20,10 +20,6 @@ install:
   - docker pull node
 
 before_script:
-  #  - chmod -R 777 log temp
-  - touch ./app/config.environment.local.php
-  - echo "<?php define('ENVIRONMENT', ENV_LOCAL);" >> ./app/config.environment.local.php
-
   # Generate private key
   - openssl aes-256-cbc -K $encrypted_5b9f08960f5d_key -iv $encrypted_5b9f08960f5d_iv -in id_rsa.enc -out id_rsa -d
 
